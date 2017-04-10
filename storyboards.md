@@ -10,3 +10,6 @@
 5. Heat map of Travel
 ![Heat map of Travel Part 1](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/storyboards/storyboard3.1.jpg)
 ![Heat map of Travel Part 2](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/storyboards/storyboard3.2.jpg)
+6. Walking/Running in Shapes
+![Walking/Running in Shapes Part 1](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/storyboards/storyboard6.1.jpg)
+![Walking/Running in Shapes Part 2](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/storyboards/storyboard6.2.jpg)
