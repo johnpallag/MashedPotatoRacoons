@@ -1,7 +1,7 @@
 # Proposal
 ---
 ## Title
-Lorem ipsem
+Epidemic Go
 
 ## Idea
 A virus simulator that takes your past and current location data, along with other parameters, and predicts how long it would take for you to infect the world!  Compete with friends to see who can infect more.
@@ -25,7 +25,7 @@ A virus simulator that takes your past and current location data, along with oth
 * Different starting viruses
 
 ## Splitting up the work
-* Alex:
-* John:
-* Sophia:
-* XU:
+* Alex: Networking - determine if two phones are near each other
+* John: Simulator & client side of network
+* Sophia: Mapping / tracking position & help on simulator
+* Xu: UI & client interaction
