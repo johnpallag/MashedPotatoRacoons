@@ -5,3 +5,4 @@ Epidemic Go
 
 ![Main screen John](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/john_main.jpg)
 ![Virus Editor screen John](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/john_virusEditor.jpg)
+![Virus Main Screen Alex](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/alexproto.jpg)
