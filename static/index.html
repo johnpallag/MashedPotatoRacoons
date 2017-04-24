@@ -2,21 +2,66 @@
 
 <html>
 <head>
-	<title>Epedemic Go!</title>	
+	<title>Epedemic Go!</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/jquery.js"></script>
-	
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
-	
+
 	<!-- TODO: Include Map API (Probably Google Maps) -->
+    <style>
+       #map {
+				 position:absolute;
+				 left: 0;
+				 top: 0;
+        height: 100%;
+        width: 100%;
+				z-index: -1;
+       }
+    </style>
+
 </head>
 
 <body>
-	<!-- TODO: Create main page -->
+    <div id="map"></div>
+		    <h3>Epidemic Go</h3>
+    <script>
+		var map;
+		var center = null;
+      function initMap() {
+        var uluru = {lat: 32, lng: -117};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: uluru
+        });
+				if(center){
+					map.setCenter({lat: location.latitude, lng: location.longitude});
+				}
+				navigator.geolocation.getCurrentPosition(function(e,x){
+					center = e.coords;
+					if(map){
+						map.setCenter({
+							lat: e.coords.latitude,
+							lng: e.coords.longitude
+						});
+		        var marker = new google.maps.Marker({
+		          position: {
+								lat: e.coords.latitude,
+								lng: e.coords.longitude
+							},
+		          map: map
+		        });
+					}
+				});
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&callback=initMap">
+    </script>
 </body>
 </html>
