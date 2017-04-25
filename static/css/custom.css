@@ -1,0 +1,17 @@
+#Infect-button {
+  background-color: #FFD7C2;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.btn-floating{
+  text-align: center;
+
+}
+
+
+.btn-floating.btn-large {
+  width: 70px;
+  height: 70px;
+}
