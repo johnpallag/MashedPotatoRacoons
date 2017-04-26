@@ -1,16 +1,103 @@
 <!DOCTYPE html>
-<!-- Make a virus -->
 
-<!-- Modals with all virus types -->
-
-<!-- choose  -->
 <html lang="en">
     <head>
-        <title>Choose Your Virus!</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
-    <body>
-        <header>Sneezer</header>
-        <header>Achoo</header>
-        <header>Puke Machine</header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <font size ="6">Choose Your Virus!</font>
+                </br>
+                </br>
+                <font size="3">Choose and Personalize your virus to take over the world!</font>
+                </br>
+                </br>
+                <form id="myForm">
+                    <!-- Sneezer -->
+                    <img src="./img/sneezer.jpg" style="margin:auto; width:200px;display:block" />
+                    <button type="button" class="text" data-toggle="modal" data-target="#sneezer"><u>Sneezer</u></button>
+                    </br>
+                    </br>
+
+                    <!-- Achoo -->
+                    <img src="./img/achoo.jpeg" style="margin:auto; width:200px;display:block" />
+                    <button type="button" class="text" data-toggle="modal" data-target="#achoo"><u>Achoo</u></button>
+                    </br>
+                    </br>
+                    <!-- Puke Machine -->
+                    <img src="./img/pukemachine.jpg" style="margin:auto; width:200px;display:block" />
+                    <button type="button" class="text" data-toggle="modal" data-target="#pukemachine"><u>Puke Machine</u></button>
+                    </br>
+                    </br>
+                </form>
+            </div>
+         </div>
+    </header>
+    
     </body>
+
+<!--Sneezer Modal -->
+<div id="sneezer" class="modal Fade" role="dialog">
+    <div class ="modal-dialog">
+        <!--Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Sneezer</h4>
+            </div>
+            <div class="modal-body">
+                <!--https://img.clipartfest.com/6ab29563b4336d39bcb91268da665779_virus-cartoon-size-151-kb-animated-virus-clipart_200-186.jpeg-->
+                <img src="./img/sneezer.jpg" style="width: 250px; height: 200px;" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Achoo Modal -->
+<div id="achoo" class="modal Fade" role="dialog">
+    <div class ="modal-dialog">
+        <!--Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Achoo</h4>
+            </div>
+            <div class="modal-body">
+               <!--http://www.publicdomainpictures.net/pictures/80000/nahled/cartoon-germ-virus-1392293606YEK.jpg--> 
+                <img src="./img/achoo.jpeg" style="width: 250px; height: 140px;" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Puke Machine Modal -->
+<div id="pukemachine" class="modal Fade" role="dialog">
+    <div class ="modal-dialog">
+        <!--Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Puke Machine</h4>
+            </div>
+            <div class="modal-body">
+                <!--http://www.publicdomainpictures.net/pictures/80000/velka/cartoon-germ-virus-139229352203G.jpg-->
+                <img src="./img/pukemachine.jpg" style="width: 200px; height: 160px;" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+            </div>
+        </div>
+   </div>
+</div>
 </html>
