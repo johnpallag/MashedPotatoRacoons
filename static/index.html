@@ -119,6 +119,7 @@
 		$(".button-collapse").sideNav();
 		var socket = io();
 		var markers = [];
+		var id = Math.random();
 		socket.on("update", function(evt) {
 			var locations = JSON.parse(evt);
 			if(map){
