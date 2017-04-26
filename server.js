@@ -17,9 +17,13 @@ const io = socketIO(server);
 // TODO: Login
 // TODO: Other server calls???
 
+var locations = [];
+
 io.on('connection', function(socket){
   // TODO: Handle events
-  socket.on('message', function(json){
-    io.emit('response', json);
+  socket.on('joined', function(json){
+    locations.push(JSON.parse(json));
+    console.log(locations);
+    io.emit('update', JSON.stringify(locations));
   });
 });
