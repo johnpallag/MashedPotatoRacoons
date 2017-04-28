@@ -9,17 +9,17 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Epidemic Go</title>
 	<script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+	<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-	<!-- Bootstrap -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
 	<!-- Custom CSS -->
 	<link href="css/custom.css" rel="stylesheet">
 	<!--Import Google Icon Font-->
 	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 </head>
 
 
@@ -60,82 +60,18 @@
 	</nav>
 	<!--Navbar & Sidebar-->
 	<div id="map"></div>
-	<script>
-		var map;
-		var center = null;
 
-		function initMap() {
-			var uluru = {
-				lat: 32,
-				lng: -117
-			};
-			map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 14,
-				center: uluru
-			});
-			if (center) {
-				map.setCenter({
-					lat: location.latitude,
-					lng: location.longitude
-				});
-			}
-			navigator.geolocation.getCurrentPosition(function(e, x) {
-				center = e.coords;
-				if (map) {
-					map.setCenter({
-						lat: e.coords.latitude,
-						lng: e.coords.longitude
-					});
-					socket.emit("joined", JSON.stringify({
-						lat: e.coords.latitude,
-						lng: e.coords.longitude
-					}));
-					var marker = new google.maps.Marker({
-						position: {
-							lat: e.coords.latitude,
-							lng: e.coords.longitude
-						},
-						map: map
-					});
-				}
-			});
-		}
-	</script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&callback=initMap">
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&libraries=visualization&callback=initMap">
 	</script>
 	<a class="btn-floating btn-large waves-effect waves-light blue lighten-1" id="Infect-button">Infect!</a>
-
-
-
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	
 	<!--Import jQuery before materialize.js-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-	<script>
-		$(".button-collapse").sideNav();
-		var socket = io();
-		var markers = [];
-		var id = Math.random();
-		socket.on("update", function(evt) {
-			var locations = JSON.parse(evt);
-			if(map){
-				markers.forEach(function(marker){
-					marker.setMap(null);
-				});
-				markers = [];
-				console.log(locations);
-				locations.forEach(function(coords){
-					markers.push(new google.maps.Marker({
-						position: coords,
-						map: map
-					}));
-				});
-			}
-		});
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+	<script src="js/index.js">
 	</script>
 </body>
 
