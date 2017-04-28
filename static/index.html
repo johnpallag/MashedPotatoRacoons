@@ -20,6 +20,12 @@
 
 	<!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </head>
 
 
@@ -60,6 +66,7 @@
 	</nav>
 	<!--Navbar & Sidebar-->
 	<div id="map"></div>
+	<a class="btn-floating btn-large waves-effect waves-light blue lighten-1" id="Infect-button">Infect!</a>
 
 	<script>
 	const id = Math.random();
@@ -138,13 +145,6 @@
 
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&libraries=visualization&callback=initMap">
 	</script>
-	<a class="btn-floating btn-large waves-effect waves-light blue lighten-1" id="Infect-button">Infect!</a>
-
-	<!--Import jQuery before materialize.js-->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 </body>
 
 </html>
