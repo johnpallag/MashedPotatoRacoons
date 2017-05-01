@@ -8,9 +8,8 @@ const socket = io();
 const REFRESH_RATE = 1500;
 
 var map;
-
 var center = null;
-var markers = [];
+
 var players = {};
 var heatmaps = {};
 var heatmapDatas = {};
@@ -40,7 +39,7 @@ function initMap() {
     lng: -117
   };
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
+    zoom: 22,
     center: uluru
   });
   if (center) {
@@ -59,13 +58,16 @@ function initMap() {
   });
 }
 
-function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
+function hexToRGB(hex, alpha) {
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    if (alpha) {
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    } else {
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
 }
 
 $(document).ready(function() {
@@ -80,13 +82,7 @@ $(document).ready(function() {
           map: map
         });
 
-        var rgb = hexToRgb(players[player].color);
-        var gradient = ['rgba(0, 255, 255, 0)'];
-        if(rgb){
-          gradient.push('rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 1)');
-        } else {
-          gradient.push('rgba(0,0,0, 1)');
-        }
+        var gradient = ['rgba(255, 255, 255, 0)', hexToRGB(players[player].color, 1) ];
         heatmaps[player].set('gradient', gradient);
       }
     });
