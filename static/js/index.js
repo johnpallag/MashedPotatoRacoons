@@ -1,18 +1,22 @@
 /*global
-io, google, document, navigator, $
+io, google, document, navigator, $, window
 */
 "use strict";
-const id = Math.random();
+const id = "ep" + Math.floor(Math.random() * 100000);
+const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
 const socket = io();
 const REFRESH_RATE = 1500;
 
 var map;
-var heatmap;
+
 var center = null;
 var markers = [];
+var players = {};
+var heatmaps = {};
+var heatmapDatas = {};
 
 function getPosition(callback) {
-  setTimeout(function(){
+  setTimeout(function() {
     getPosition(callback);
   }, REFRESH_RATE);
   if (navigator && navigator.geolocation && navigator.geolocation.getCurrentPosition) {
@@ -43,34 +47,56 @@ function initMap() {
     map.setCenter(center);
   }
 
-  getPosition(function(loc){
+  getPosition(function(loc) {
     center = loc;
     if (map) {
       map.setCenter(loc);
-      socket.emit("joined", JSON.stringify(loc));
+      socket.emit("locationChanged", JSON.stringify({
+        id: id,
+        location: loc
+      }));
     }
   });
 }
 
-$(".button-collapse").sideNav();
-socket.on("update", function(evt) {
-  var locations = JSON.parse(evt);
-  if (map) {
-    markers.forEach(function(marker) {
-      marker.setMap(null);
-    });
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
 
-    heatmap = new google.maps.visualization.HeatmapLayer({
-      data: markers.map(function(marker){return marker.position;}),
-      map: map
-    });
-    markers = [];
+$(document).ready(function() {
+  $(".button-collapse").sideNav();
+  socket.on("joined", function(evt) {
+    players = JSON.parse(evt);
+    Object.keys(players).forEach(function(player) {
+      if (!heatmaps[player]) {
+        heatmapDatas[player] = new google.maps.MVCArray([]);
+        heatmaps[player] = new google.maps.visualization.HeatmapLayer({
+          data: heatmapDatas[player],
+          map: map
+        });
 
-    locations.forEach(function(coords) {
-      markers.push(new google.maps.Marker({
-        position: coords,
-        map: null
-      }));
+        var rgb = hexToRgb(players[player].color);
+        var gradient = ['rgba(0, 255, 255, 0)'];
+        if(rgb){
+          gradient.push('rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ', 1)');
+        } else {
+          gradient.push('rgba(0,0,0, 1)');
+        }
+        heatmaps[player].set('gradient', gradient);
+      }
     });
-  }
+  });
+  socket.emit("joined", JSON.stringify({
+    id: id,
+    color: color
+  }));
+  socket.on("update", function(evt) {
+    var player = JSON.parse(evt);
+    heatmapDatas[player.id].push(new google.maps.LatLng(player.location));
+  });
 });
