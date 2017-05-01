@@ -1,5 +1,6 @@
 // Express is a web framework for node.js
 // that makes nontrivial applications easier to build
+"use strict";
 var express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
@@ -17,13 +18,19 @@ const io = socketIO(server);
 // TODO: Login
 // TODO: Other server calls???
 
-var locations = [];
+var players = {};
 
 io.on('connection', function(socket){
   // TODO: Handle events
   socket.on('joined', function(json){
-    locations.push(JSON.parse(json));
-    console.log(locations);
-    io.emit('update', JSON.stringify(locations));
+    var data = JSON.parse(json);
+    players[data.id] = data || players[data.id];
+    data.locations = data.locations || [];
+    io.emit('joined', JSON.stringify(players));
+  });
+  socket.on('locationChanged', function(json){
+    var data = JSON.parse(json);
+    players[data.id].locations.push(JSON.parse(json).location);
+    io.emit('update', json);
   });
 });
