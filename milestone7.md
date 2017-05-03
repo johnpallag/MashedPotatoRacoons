@@ -9,7 +9,7 @@ Sophia - Worked on the choose virus page, switched from boostrap to materialize,
          and made it so that clicking on the images of the virsus also opens their individiual modals. 
          Page: https://epidemic-go.herokuapp.com/choose_virus/index_notbootstrap.html
          
-Xu -
+Xu - Worked on Main page and How to play page, added profile and levels showing up in the sidenav and a new page to how to play.
 
 ## Core Functionality:
 The map now has heat maps of each person that has longed on. Each person getting a different color.
