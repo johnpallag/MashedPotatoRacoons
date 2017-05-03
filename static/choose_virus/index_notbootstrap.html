@@ -42,38 +42,43 @@
     <body>
         <!--Navbar & Sidebar-->
         <nav>
-                <div class="nav-wrapper blue lighten-1">
-                        <a href="#" class="brand-logo center">Epidemic Go</a>
-                        <a href="#"><i class="material-icons right">perm_identity</i></a>
-                        <ul id="slide-out" class="side-nav">
-                                <li><a href="#!">Home</a></li>
-                                <li><a href="#!">Social</a></li>
-                        </ul>
-                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-                </div>
+            <div class="nav-wrapper blue lighten-1">   
+                <a href="#" class="brand-logo center">Epidemic Go</a>
+                <a href="#"><i class="material-icons right">perm_identity</i></a>
+                <ul id="slide-out" class="side-nav">
+                    <li><a href="#!">Home</a></li>
+                    <li><a href="#!">Social</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
         </nav>
         
         <!-- Viruses -->
         <div class="container">
             <div class="intro-text">
-                <font size ="6">Choose Your Virus!</font>
-                </br>
-                <font size="3">Choose and personalize your virus to take over the world!</font>
+                <h4>Choose Your Virus!</h4>
+                <h6>Choose and personalize your virus to take over the world!</h6>
                 </br>
                 </br>
                 <form id="myForm">
                     <div class="row">
                         <!-- Sneezer -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/sneezer_3.png" />
+                            <a class="responsive-btn" href="#sneezer">
+                                <img class="responsive-img" src="./img/sneezer_3.png" />
+                            </a>
                         </div>
                         <!-- Achoo -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/achoo.png" />
+                            <a class="responsive-btn" href="#achoo">
+                                <img class="responsive-img" src="./img/achoo.png" />
+                            </a>
                         </div>
                         <!-- Puke Machine -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/virus_2.png" />
+                            <a class="responsive-btn" href="#pukemachine">
+                                <img class="responsive-img" src="./img/virus_2.png" />
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -90,15 +95,21 @@
                     <div class="row">
                         <!-- Diarrhea Dave -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/coffee.png" />
+                            <a class="responsive-btn" href="#diarrheadave">
+                                <img class="responsive-img" src="./img/coffee.png"/>
+                            </a>
                         </div>
                         <!-- Virus 5 -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/Virus_6.png" />
+                            <a class="responsive-btn" href="#virus5">
+                                <img class="responsive-img" src="./img/Virus_6.png" />
+                            </a>
                         </div>
                         <!-- Virus 6 -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png" />
+                            <a class="responsive-btn" href="#virus6">
+                                <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png" />
+                            </a>
                         </div>
                     </div>
                     <div class="row">
@@ -115,7 +126,9 @@
                     <div class="row">
                         <!-- Virus 7 -->
                         <div class="col s4">
-                            <img class="responsive-img" src="./img/creeper.png" />
+                            <a class="responsive-btn" href="#virus7">
+                                <img class="responsive-img" src="./img/creeper.png" />
+                            </a>
                         </div>
                         <div class="col s4">
                         </div>
@@ -306,7 +319,6 @@
 
 <script>
 $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
   });
 </script>
