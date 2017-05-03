@@ -1,7 +1,7 @@
 # Milestone 7
 
 ## Team Member Contributions
-Alex
+Alex - Virus design and UI design for whole page.
 
 John - Heat map (view core functionality).  Multiple player visualization.  Tracking multiple players on the server.  Better navigation saving.
 
