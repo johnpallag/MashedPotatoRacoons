@@ -1,6 +1,6 @@
-#Milestone 7
+# Milestone 7
 
-##Team Member Contributions
+## Team Member Contributions
 Alex
 
 John - Heat map (view core functionality)
@@ -10,8 +10,14 @@ Sophia - Worked on the choose virus page, switched from boostrap to materialize,
          Page: https://epidemic-go.herokuapp.com/choose_virus/index_notbootstrap.html
 Xu
 
-##Core Functionality:
+## Core Functionality:
 The map now has heat maps of each person that has longed on. Each person getting a different color.
 The map als covers a smaller area when you open it (more zoomed in).
 
+Zoomed in image:
 
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/milestone7_zoom.png)
+
+
+Heat map feature:
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/milestone7_heatmap.png)
