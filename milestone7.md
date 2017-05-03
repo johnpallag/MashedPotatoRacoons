@@ -3,7 +3,7 @@
 ## Team Member Contributions
 Alex
 
-John - Heat map (view core functionality)
+John - Heat map (view core functionality).  Multiple player visualization.  Tracking multiple players on the server.  Better navigation saving.
 
 Sophia - Worked on the choose virus page, switched from boostrap to materialize, created viruses with Illustrator
          and made it so that clicking on the images of the virsus also opens their individiual modals. 
