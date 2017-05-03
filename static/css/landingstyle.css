@@ -1,0 +1,23 @@
+.jumbotron {
+  
+  margin: 0 auto;
+  width: 500px; 
+}
+#newgame{
+	margin-left: 150px;	
+}
+.display-3{
+	margin-left: 50px;
+}
+
+#howtoplay{
+	margin-left: 140px;
+}
+
+#leaderboards{
+	margin-left: 130px;	
+}
+#Login{
+	margin-left: 1600px;	
+	margin-top: 25px;
+}
