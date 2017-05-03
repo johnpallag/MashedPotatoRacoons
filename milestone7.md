@@ -1,7 +1,7 @@
 # Milestone 7
 
 ## Team Member Contributions
-Alex - Virus design and UI design for whole page.
+Alex - Create basic HTML/CSS for landing page. Virus design and UI design for whole page.
 
 John - Heat map (view core functionality).  Multiple player visualization.  Tracking multiple players on the server.  Better navigation saving.
 
@@ -10,6 +10,8 @@ Sophia - Worked on the choose virus page, switched from boostrap to materialize,
          Page: https://epidemic-go.herokuapp.com/choose_virus/index_notbootstrap.html
          
 Xu - Worked on Main page and How to play page, added profile and levels showing up in the sidenav and a new page to how to play.
+
+
 
 ## Core Functionality:
 The map now has heat maps of each person that has longed on. Each person getting a different color.
