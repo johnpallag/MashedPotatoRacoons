@@ -4221,6 +4221,11 @@ nav .nav-wrapper {
   height: 100%;
 }
 
+@media only screen and (min-width: 993px) {
+  nav a.button-collapse {
+    display: none;
+  }
+}
 
 nav .button-collapse {
   float: left;
@@ -4375,7 +4380,7 @@ nav .input-field label.active i {
   position: fixed;
 }
 
-
+@media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
     min-height: 64px;
   }
@@ -4386,7 +4391,7 @@ nav .input-field label.active i {
   .navbar-fixed {
     height: 64px;
   }
-
+}
 
 @font-face {
   font-family: "Roboto";

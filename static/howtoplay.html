@@ -26,7 +26,7 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/howtoplay.js"></script>
 	<link href="css/style.css" rel="stylesheet"/>
 </head>
 
@@ -56,7 +56,7 @@
                 <li><a href="#!"><i class="material-icons">play_arrow</i>Play Now</a></li>
                 <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
                 <li><div class="divider"></div></li>
-                <li><a class="waves-effect" href="#!">About</a></li>
+                <li><a class="waves-effect" href="#!">How to play</a></li>
                 <li><a class="waves-effect" href="#!">Setting</a></li>
             </ul>
             
@@ -66,8 +66,25 @@
 		</div>
 	</nav>
 	<!--Navbar & Sidebar-->
-	<div id="map"></div>
-	<a class="btn-floating btn-large waves-effect waves-light blue lighten-1" id="Infect-button">Infect!</a>
+	
+	
+    <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header active">Overview of the game</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">How to score</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">Interact with friends</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
+    
+    
+    
 
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&libraries=visualization&callback=initMap">
 	</script>
