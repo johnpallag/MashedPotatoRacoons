@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Epidemic Go</title>
+        <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+        <link href="css/style.css" rel="stylesheet"/>
+
+        <!--
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        -->
+
+    </head>
+    
+    <!-- Body -->
+    <body>
+        <!--Navbar & Sidebar-->
+        <nav>
+                <div class="nav-wrapper blue lighten-1">
+                        <a href="#" class="brand-logo center">Epidemic Go</a>
+                        <a href="#"><i class="material-icons right">perm_identity</i></a>
+                        <ul id="slide-out" class="side-nav">
+                                <li><a href="#!">Home</a></li>
+                                <li><a href="#!">Social</a></li>
+                        </ul>
+                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+        </nav>
+        
+        <!-- Viruses -->
+        <div class="container">
+            <div class="intro-text">
+                <font size ="6">Choose Your Virus!</font>
+                </br>
+                <font size="3">Choose and personalize your virus to take over the world!</font>
+                </br>
+                </br>
+                <form id="myForm">
+                    <div class="row">
+                        <!-- Sneezer -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/sneezer_3.png" />
+                        </div>
+                        <!-- Achoo -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/achoo.png" />
+                        </div>
+                        <!-- Puke Machine -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/virus_2.png" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#sneezer">Sneezer</a>
+                        </div>
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#achoo">Achoo</a>
+                        </div>
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#pukemachine">Puke Machine</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Diarrhea Dave -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/coffee.png" />
+                        </div>
+                        <!-- Virus 5 -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/Virus_6.png" />
+                        </div>
+                        <!-- Virus 6 -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#diarrheadave">Diarrhea Dave</a>
+                        </div>
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#virus5">Virus 5</a>
+                        </div>
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#virus6">Virus 6</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Virus 7 -->
+                        <div class="col s4">
+                            <img class="responsive-img" src="./img/creeper.png" />
+                        </div>
+                        <div class="col s4">
+                        </div>
+                        <div class="col s4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4">
+                            <a class="responsive-btn" href="#virus7">Virus 7</a>
+                        </div>
+                        <div class="col s4">
+                        </div>
+                        <div class="col s4">
+                        </div>
+                    </div>
+                </form>
+            </div>
+         </div>
+    
+    </body>
+
+
+<!-- CSS for Modals -->
+<style>
+    .modal { width: 75% !important ; max-height: 100% !important }
+</style>
+
+<!--Modals-->
+
+<!-- Sneezer Modal -->
+<div id="sneezer" class="modal">
+    <div class="modal-content">
+        <h4>Sneezer</h4>
+        <img class="responsive-img" src="./img/sneezer_3.png" >
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Achoo Modal -->
+<div id="achoo" class="modal">
+    <div class="modal-content">
+        <h4>Achoo</h4>
+        <img class="responsive-img" src="./img/achoo.png" >
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Puke Machine Modal -->
+<div id="pukemachine" class="modal">
+    <div class="modal-content">
+        <h4>Puke Machine</h4>
+        <img class="responsive-img" src="./img/virus_2.png">
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Diarrhea Dave Modal -->
+<div id="diarrheadave" class="modal">
+    <div class="modal-content">
+        <h4>Diarrhea Dave</h4>
+        <img class="responsive-img" src="./img/coffee.png">
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Virus 5 Modal -->
+<div id="virus5" class="modal">
+    <div class="modal-content">
+        <h4>Virus 5</h4>
+        <img class="responsive-img" src="./img/Virus_6.png">
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div> 
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Virus 6 Modal -->
+<div id="virus6" class="modal">
+    <div class="modal-content">
+        <h4>Virus 6</h4>
+        <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png">
+        </br>
+        </br>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Virus 7 Modal -->
+<div id="virus7" class="modal">
+    <div class="modal-content">
+        <h4>Virus 7</h4>
+        <img class="responsive-img" src="./img/creeper.png">
+        </br>
+        </br>
+        <p><b>Life Story:</b> Sneezer grew up as an outcast. All of his relatives infect humans with the common cold
+              while he only causes sneeze attacks. Sneezer wants to prove he is the best virus by infecting the whole world!</p>
+        <p><b>Distance to Infect:</b> 20 feet</p>
+        <p><b>Incubation period:</b> 1 day</p>
+        <p><b>Time Infected:</b> 5 days</p>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
+            </div>
+            <div class="col s6">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>    
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+</html>
