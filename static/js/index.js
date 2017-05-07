@@ -1,5 +1,5 @@
 /*global
-io, google, document, navigator, $, window
+io, google, document, navigator, $, window, location
 */
 "use strict";
 const id = "ep" + Math.floor(Math.random() * 100000);
@@ -9,10 +9,12 @@ const REFRESH_RATE = 1500;
 
 var map;
 var center = null;
+var googleIsLoaded = false;
 
 var players = {};
-var heatmaps = {};
-var heatmapDatas = {};
+var markers = {};
+var heatmap = null;
+var heatmapData = {};
 
 function getPosition(callback) {
   setTimeout(function() {
@@ -33,15 +35,46 @@ function getPosition(callback) {
   }
 }
 
+function hexToRGB(hex, alpha) {
+  var r = parseInt(hex.slice(1, 3), 16),
+    g = parseInt(hex.slice(3, 5), 16),
+    b = parseInt(hex.slice(5, 7), 16);
+
+  if (alpha) {
+    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+  } else {
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+  }
+}
+
+function infect() {
+  socket.emit("infect", JSON.stringify({
+    id: id
+  }));
+}
+
 function initMap() {
   var uluru = {
     lat: 32,
     lng: -117
   };
+  googleIsLoaded = true;
+
+  heatmapData = new google.maps.MVCArray([]);
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 22,
     center: uluru
   });
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: heatmapData,
+    map: map,
+    radius: 50
+  });
+  var gradient = ['rgba(255, 255, 255, 0)',
+    hexToRGB(color, 1), hexToRGB(color, 1), hexToRGB(color, 1), hexToRGB(color, 1), hexToRGB(color, 1),
+    hexToRGB(color, 1), hexToRGB(color, 1)
+  ];
+  heatmap.set('gradient', gradient);
   if (center) {
     map.setCenter(center);
   }
@@ -50,7 +83,11 @@ function initMap() {
     center = loc;
     if (map) {
       map.setCenter(loc);
-      socket.emit("locationChanged", JSON.stringify({
+      heatmapData.push({
+        location: new google.maps.LatLng(loc.lat, loc.lng),
+        weight: 5
+      });
+      socket.emit("updateLocation", JSON.stringify({
         id: id,
         location: loc
       }));
@@ -58,41 +95,54 @@ function initMap() {
   });
 }
 
-function hexToRGB(hex, alpha) {
-    var r = parseInt(hex.slice(1, 3), 16),
-        g = parseInt(hex.slice(3, 5), 16),
-        b = parseInt(hex.slice(5, 7), 16);
+function resetMarkers() {
+  Object.keys(markers).forEach(function(id) {
+    markers[id].setMap(null);
+  });
+}
 
-    if (alpha) {
-        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-    } else {
-        return "rgb(" + r + ", " + g + ", " + b + ")";
-    }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 $(document).ready(function() {
+  $("#Infect-button").on('click', infect);
   $(".button-collapse").sideNav();
-  socket.on("joined", function(evt) {
+  socket.on("data", function(evt) {
     players = JSON.parse(evt);
-    Object.keys(players).forEach(function(player) {
-      if (!heatmaps[player]) {
-        heatmapDatas[player] = new google.maps.MVCArray([]);
-        heatmaps[player] = new google.maps.visualization.HeatmapLayer({
-          data: heatmapDatas[player],
-          map: map
+    resetMarkers();
+    Object.keys(players).forEach(function(id) {
+      if(googleIsLoaded){
+        markers[id] = markers[id] || new google.maps.Marker({
+          icon: {
+            url: location.href + 'images/' + players[id].virus.params.image + '.png',
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(50, 50)
+          }
         });
-
-        var gradient = ['rgba(255, 255, 255, 0)', hexToRGB(players[player].color, 1) ];
-        heatmaps[player].set('gradient', gradient);
+        markers[id].setPosition(players[id].location);
+        markers[id].setMap(map);
       }
     });
+    $("#viruses").html("");
+    if(players && players[id]){
+      players[id].viruses.forEach(function(virus){
+        var vDiv = $("<div>");
+        vDiv.css("background-color", virus.params.color);
+        vDiv.css("background-image", "url(" + location.href + 'images/' + virus.params.image + '.png)');
+        vDiv.addClass("virusIcon");
+        $("#viruses").append(vDiv);
+      });
+    }
   });
   socket.emit("joined", JSON.stringify({
     id: id,
-    color: color
+    virus: {
+      threshold: 5,
+      image: getRandomInt(0, 6),
+      color: color
+    }
   }));
-  socket.on("update", function(evt) {
-    var player = JSON.parse(evt);
-    heatmapDatas[player.id].push(new google.maps.LatLng(player.location));
-  });
 });

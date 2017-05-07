@@ -3,7 +3,26 @@
   position: absolute;
   bottom: 10px;
   right: 20px;
-  font-size: 10px !important; 
+  font-size: 10px !important;
+}
+
+#viruses{
+    position: absolute;
+    left: calc(50% - 125px);
+    bottom: 0;
+    width: 250px;
+    height: 50px;
+    background-color: white;
+}
+
+.virusIcon {
+    width: 36px;
+    height: 36px;
+    display:inline-block;
+    border-radius: 50%;
+    margin: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .btn-floating{
@@ -60,4 +79,3 @@ nav .button-collapse i {
     line-height: 56px !important;
     font-weight: bold !important;
 }
-

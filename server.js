@@ -3,10 +3,10 @@
 "use strict";
 var express = require('express');
 const socketIO = require('socket.io');
-const path = require('path');
+const Player = require('./player').Player;
+const Virus = require('./virus').Virus;
 
 const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
 
 const server = express()
   .use(express.static(__dirname + '/static'))
@@ -14,23 +14,53 @@ const server = express()
 
 const io = socketIO(server);
 
-// TODO: Create some data structure to hold current users
-// TODO: Login
-// TODO: Other server calls???
-
 var players = {};
 
 io.on('connection', function(socket){
-  // TODO: Handle events
   socket.on('joined', function(json){
-    var data = JSON.parse(json);
-    players[data.id] = data || players[data.id];
-    data.locations = data.locations || [];
-    io.emit('joined', JSON.stringify(players));
+    const data = JSON.parse(json);
+    const id = data.id;
+    const virusParams = data.virus;
+    if(!id || players[id] || !virusParams) {
+      return;
+    }
+    const virus = new Virus(id, virusParams);
+    const player = new Player(id, virus);
+    players[id] = player;
+    io.emit('data', JSON.stringify(players));
   });
-  socket.on('locationChanged', function(json){
-    var data = JSON.parse(json);
-    players[data.id].locations.push(JSON.parse(json).location);
-    io.emit('update', json);
+  socket.on('updateLocation', function(json){
+    const data = JSON.parse(json);
+    const id = data.id;
+    const loc = data.location;
+    if(!id || !players[id] || !loc) {
+      return;
+    }
+    players[id].updateLocation(loc);
+    io.emit('data', JSON.stringify(players));
   });
+  socket.on('infect', function(json){
+    const data = JSON.parse(json);
+    const id = data.id;
+    if(!id || !players[id]) {
+      return;
+    }
+    const currentPlayer = players[id];
+    function tryInfect(virus, player){
+      const distance = currentPlayer.distance(player);
+      if(distance <= virus.threshold){
+        player.infect(virus);
+      }
+    }
+    Object.keys(players).forEach(function(id){
+      if(id !== currentPlayer.id){
+        tryInfect(currentPlayer.virus, players[id]);
+        currentPlayer.viruses.forEach(function(virus){
+          tryInfect(virus, players[id]);
+        });
+      }
+    });
+    io.emit('data', JSON.stringify(players));
+  });
+  io.emit('data', JSON.stringify(players));
 });
