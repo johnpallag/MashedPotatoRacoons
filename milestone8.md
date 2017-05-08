@@ -12,3 +12,9 @@ Descriptions: The first one shows the current leaderboard with the total points 
 
 ![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/20170508_142230.jpg)
 ![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/20170508_142220.jpg)
+
+## Alex
+Descriptions: Prototype that shows the design of our landing page. A tutorial which overlays over the main map page pointing
+out important features and initialzing pplay.
+
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/121proto.jpg)
