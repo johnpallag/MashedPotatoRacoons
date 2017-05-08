@@ -10,4 +10,7 @@ ability to change colors to make them more personal.
 
 #John
 
+Descriptions: The first one shows the current leaderboard with the total points and prizes the people have won.  The second shows a different version of the choose virus page.
 
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/20170508_142230.jpg)
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/20170508_142220.jpg)
