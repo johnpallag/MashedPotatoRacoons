@@ -18,3 +18,7 @@ Descriptions: Prototype that shows the design of our landing page. A tutorial wh
 out important features and initialzing pplay.
 
 ![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/121proto.jpg)
+
+## Xu
+Description: The first one is profile page that shows users' achievements, the second page is for users to get social and connect with friends to get sick together.
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/prototypes/Paper%20prototype%202.jpg)
