@@ -128,12 +128,12 @@ nav .button-collapse i {
   background: #dae2ef;
 }
 
-@media screen and (max-width: 449px) and (min-width: 0px){
+@media screen and (max-width: 320px) and (min-width: 0px){
 .achievement-box .achievement-text{
     text-align: center;
     color: dimgray;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 .achievement-box .achievement-number{
@@ -145,12 +145,12 @@ nav .button-collapse i {
 }
 }
 
-@media screen and (max-width: 699px) and (min-width: 450px){
+@media screen and (max-width: 699px) and (min-width: 321px){
 .achievement-box .achievement-text{
     text-align: center;
     color: dimgray;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .achievement-box .achievement-number{
