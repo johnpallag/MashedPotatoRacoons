@@ -26,8 +26,9 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-	<script src="js/howtoplay.js"></script>
+	<script src="js/index.js"></script>
 	<link href="css/style.css" rel="stylesheet"/>
+	<link rel="icon" href="images/0.png"/>
 </head>
 
 <body>
@@ -37,21 +38,21 @@
 		<div class="nav-wrapper blue lighten-1">
 			<a href="#" class="brand-logo center">Epidemic Go</a>
 			<a href="#"><i class="material-icons right">perm_identity</i></a>
-			
+
             <ul id="slide-out" class="side-nav">
                 <li><div class="userView">
                 <div class="background blue">
-                     
+
                 </div>
-                    
+
                 <a href="#!user"><img class="circle" src="images/profile.png"></a>
-                <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
+                <a href="#!name"><span class="sidenav-name white-text name">Alok Mysore</span></a>
                 <div class="levelup">
                     <div class="determinate" style="width: 70%"></div>
                 </div>
                 <a href="#!email"><span class="white-text">level 6</span></a>
                 </div></li>
-                
+
                 <li><a href="#!"><i class="material-icons">dashboard</i>Home</a></li>
                 <li><a href="#!"><i class="material-icons">play_arrow</i>Play Now</a></li>
                 <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
@@ -59,35 +60,56 @@
                 <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
                 <li><a class="waves-effect" href="#!">Setting</a></li>
             </ul>
-            
+
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            
-            
+
+
 		</div>
 	</nav>
 	<!--Navbar & Sidebar-->
-	
-	
-    <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header active">Overview of the game</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header">How to score</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Interact with friends</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
-    
-    
+    <nav>
+	   <div class="nav-wrapper indigo profile row">
+               <div class="col s5">
+                   <a href="#!user"><img class="circle profile-picture" src="images/profile.png"></a>
+               </div>
+               <span class="white-text profile-name">Alok Mysore</span>
+               <span class="white-text profile-account">@iamawesomealok</span>
+       </div>
+           <div class="achievement-tag">
+               <div class="achievement-text black-text">Achievement</div>
+           </div>
+
+               <div class="achievement-progress">
+      <div class="determinate" style="width: 70%"></div>
+  </div>
+        
+        <div class="row">
+        <div class="col s6">
+            <div class="achievement-box">
+                <div class="achievement-text">Number of virus</div>
+                <div class="achievement-number">0</div>
+            </div>
+        </div>
+        <div class="col s6"> 
+            <div class="achievement-box">
+                <div class="achievement-text">Number of people infected</div>
+                <div class="achievement-number">0</div>
+            </div>
+        </div>
+    </div>
+        
+                <div class="row">
+        <div class="col s6">
+            <div class="achievement-box"></div>
+        </div>
+        <div class="col s6"> 
+            <div class="achievement-box"></div>
+        </div>
+    </div>
+    </nav>
     
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&libraries=visualization&callback=initMap">
-	</script>
+	
 </body>
 
 </html>

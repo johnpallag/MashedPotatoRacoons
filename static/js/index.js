@@ -1,5 +1,5 @@
 /*global
-io, google, document, navigator, $, window, location
+io, google, document, navigator, $, window, location, mapStyle
 */
 "use strict";
 const id = "ep" + Math.floor(Math.random() * 100000);
@@ -13,6 +13,7 @@ var googleIsLoaded = false;
 
 var players = {};
 var markers = {};
+var circles = {};
 var heatmap = null;
 var heatmapData = {};
 
@@ -63,7 +64,8 @@ function initMap() {
   heatmapData = new google.maps.MVCArray([]);
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 22,
-    center: uluru
+    center: uluru,
+    styles: mapStyle
   });
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: heatmapData,
@@ -101,6 +103,12 @@ function resetMarkers() {
   });
 }
 
+function resetCircles() {
+  Object.keys(markers).forEach(function(id) {
+    circles[id].setMap(null);
+  });
+}
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -113,6 +121,7 @@ $(document).ready(function() {
   socket.on("data", function(evt) {
     players = JSON.parse(evt);
     resetMarkers();
+    resetCircles();
     Object.keys(players).forEach(function(id) {
       if(googleIsLoaded){
         markers[id] = markers[id] || new google.maps.Marker({
@@ -124,9 +133,20 @@ $(document).ready(function() {
         });
         markers[id].setPosition(players[id].location);
         markers[id].setMap(map);
+        circles[id] = circles[id] || new google.maps.Circle({
+            strokeColor: players[id].virus.params.color,
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: players[id].virus.params.color,
+            fillOpacity: 0.35,
+            radius: players[id].virus.threshold
+          });
+          circles[id].setMap(map);
+          circles[id].setCenter(new google.maps.LatLng(players[id].location));
       }
     });
     $("#viruses").html("");
+    $("#points").html("0 points");
     if(players && players[id]){
       players[id].viruses.forEach(function(virus){
         var vDiv = $("<div>");
@@ -135,6 +155,8 @@ $(document).ready(function() {
         vDiv.addClass("virusIcon");
         $("#viruses").append(vDiv);
       });
+      players[id].score = players[id].score || 0;
+      $("#points").html(players[id].score + " points");
     }
   });
   socket.emit("joined", JSON.stringify({
