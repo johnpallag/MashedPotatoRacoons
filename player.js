@@ -44,7 +44,9 @@ Player.prototype.infect = function(virus){
   });
   if(!done){
     this.viruses.push(virus);
+    return true;
   }
+  return false;
 };
 
 exports.Player = Player;

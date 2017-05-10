@@ -48,8 +48,11 @@ io.on('connection', function(socket){
     const currentPlayer = players[id];
     function tryInfect(virus, player){
       const distance = currentPlayer.distance(player);
-      if(distance <= virus.threshold){
-        player.infect(virus);
+      if(distance <= virus.threshold && virus.id !== player.id){
+        if(player.infect(virus)){
+          players[virus.id].score = players[virus.id].score || 0;
+          players[virus.id].score += 100;
+        }
       }
     }
     Object.keys(players).forEach(function(id){
