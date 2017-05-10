@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Epidemic Go</title>
+        <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+        <link href="css/style.css" rel="stylesheet"/>
+
+    </head>
+    
+    <!-- Body -->
+    <body>
+        <!--Navbar & Sidebar-->
+        <nav>
+            <div class="nav-wrapper blue lighten-1">
+                <a href="#" class="brand-logo center">Epidemic Go</a>
+                <a href="profile.html"><i class="material-icons right">perm_identity</i></a>
+
+                <ul id="slide-out" class="side-nav">
+                    <li><div class="userView">
+                    <div class="background blue"></div>
+
+                    <a href="#!user"><img class="circle" src="images/profile.png"></a>
+                    <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
+                    <div class="levelup">
+                        <div class="determinate" style="width: 70%"></div>
+                    </div>
+                    <a href="#!email"><span class="white-text">level 6</span></a>
+                    </div></li>
+
+                    <li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
+                    <li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+                    <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
+                    <li><a class="waves-effect" href="#!">Setting</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+        <!-- Viruses -->
+        <div class="container">
+            <div class="intro-text">
+                <h4>Choose Your Virus!</h4>
+                <h6>Choose and personalize your virus to take over the world!</h6>
+                <p>Your Virus</p>
+                <div class="row">
+                <div class="col s6">
+                <div class="card">
+                    <span class="card-title">Sneezer</span>
+                    <div class="card-image">
+                        <img class="responsive-img" id="yourvirus" src="./img/sneezer_3.png">
+                    </div>
+                    <p><small>Distance to Infect: 5 ft</small></p>
+                    <p><small>Time infected: 1 day</small></p>
+                </div>
+                </div>
+                </div>
+		        </br>
+                </br>
+                <form id="myForm">
+                    <div class="row">
+                        <!-- Sneezer -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Sneezer</span>
+                                    <div class="card-image">
+                                     <button type='button' onClick="changeImage('./img/sneezer_3.png')">
+                                        <img src="./img/sneezer_3.png">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                        <!-- Achoo -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Achoo</span>
+                                <div class="card-image">
+                                    <button type='button' onClick="changeImage('./img/achoo.png')">
+                                        <img src="./img/achoo.png" style="max-width: 110%">
+                                    </button>
+                                </div>
+                                </br>
+                                </br>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <!-- Virus 3 -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Virus 3</span>
+                                    <div class="card-image">
+                                     <button type='button' onClick="changeImage('./img/virus_2.png')">
+                                        <img src="./img/virus_2.png">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                        <!-- Virus 4 -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Virus 4</span>
+                                <div class="card-image">
+                                    <button type='button' onClick="changeImage('./img/coffee.png')">
+                                        <img src="./img/coffee.png" style="max-width: 90%">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <!-- Virus 5 -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Virus 5</span>
+                                    <div class="card-image">
+                                     <button type='button' onClick="changeImage('./img/Virus_6.png')">
+                                        <img src="./img/Virus_6.png" style="max-width: 50%">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                        <!-- Virus 6 -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Virus 6</span>
+                                <div class="card-image">
+                                    <button type='button' onClick="changeImage('./img/crazy_virus_for_photoshop.png')">
+                                        <img src="./img/crazy_virus_for_photoshop.png" style="max-width: 82%">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <!-- Virus 7 -->
+                        <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Virus 7</span>
+                                    <div class="card-image">
+                                     <button type='button' onClick="changeImage('./img/creeper.png')">
+                                        <img src="./img/creeper.png" style="max-width: 70%">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div>
+                        <!-- Sneezer -->
+                      <!--  <div class="col s6">
+                            <div class="card">
+                                <span class="card-title">Achoo</span>
+                                <div class="card-image">
+                                    <button type='button' onClick="changeImage('./img/achoo.png')">
+                                        <img src="./img/achoo.png">
+                                    </button>
+                                </div>
+                                <p><small>Distance to Infect: 5 ft</small></p>
+                                <p><small>Time infected: 1 day</small></p>
+                            </div>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+         </div>
+    
+    </body>
+
+    <script>
+    function changeImage(imagelink)
+    {
+        document.getElementById('yourvirus').src = imagelink;
+    }
+
+    </script>
+</html>
