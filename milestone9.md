@@ -17,4 +17,4 @@ The map now shows the virus of each person logged in.  It shows a radius of thei
 You can see a heatmap of your past location.  The infect button determines who is near you and infects them
 with some probability.  The list at the bottom shows who has infected you in real time.  Infections are carried as well.
 
-![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/milestone9_1.png)
+![ScreenGrab](https://raw.githubusercontent.com/johnpallag/MashedPotatoRacoons/master/milestone9.png)
