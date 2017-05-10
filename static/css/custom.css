@@ -37,7 +37,7 @@
 }
 
 
-.profile-name{
+.sidenav-name{
     font-size: 20px !important;
 }
 
@@ -78,4 +78,123 @@ nav .button-collapse i {
 .collapsible-header{
     line-height: 56px !important;
     font-weight: bold !important;
+}
+
+.profile{
+    height: 130px !important;   
+}
+
+.profile-picture{
+    position: relative;
+    margin: 16px 16px 16px 25px;
+    height: 100 px;
+    width: 100px;
+}
+
+.profile-name{
+  position: absolute;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 110px;
+}
+
+.profile-account{
+ line-height: 160px;  
+}
+
+.achievement-tag{
+  width: 80%;
+  margin-left: 10%;
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: darkgrey;
+  background: white;
+    
+}
+
+.achievement-text{
+  font-weight:  !important;
+  font-family: Roboto;
+  font-size: 20px;
+}
+
+.achievement-box{
+  margin-top: 20px;
+  margin-left: 5%;
+  width: 90%;
+  height:25vw;
+  background: #dae2ef;
+}
+
+@media screen and (max-width: 449px) and (min-width: 0px){
+.achievement-box .achievement-text{
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.achievement-box .achievement-number{
+    margin-top: -20px;
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+    font-size: 50px;
+}
+}
+
+@media screen and (max-width: 699px) and (min-width: 450px){
+.achievement-box .achievement-text{
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.achievement-box .achievement-number{
+    margin-top: -10px;
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+    font-size: 70px;
+}
+}
+
+@media screen and (max-width: 1300px) and (min-width: 700px){
+.achievement-box .achievement-text{
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+}
+
+.achievement-box .achievement-number{
+    margin-top: 5px;
+    text-align: center;
+    color: dimgray;
+    font-weight: 500;
+    font-size: 80px;
+}
+}
+
+.achievement-progress {
+  margin-top:20px;
+  margin-left:10%;
+  position: relative;
+  height: 30px;
+  display: block;
+  width: 80%;
+  background-color: #dae2ef;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.achievement-progress .determinate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #FFDC01;
+  transition: width .3s linear;
 }
