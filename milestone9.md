@@ -8,7 +8,7 @@ Better navigation saving.  Showing viruses on map.  Infect button working.  Poin
 
 Sophia - Updated choose virus page. "Your virus" is the top image and clicking on a virus changes your image or clicking choose in the
 virus modal. Change name of modal to stats. Added new navigation bar. Played with a few new layouts but stuck with 3 viruses per row.
-Page: https://epidemic-go.herokuapp.com/choose_virus/index.html
+Page: https://epidemic-go.herokuapp.com/choose_virus/index.html *** put in inspection mode to view it properly (otherwise looks wonky)
          
 Xu - Update profile page and css file
 
