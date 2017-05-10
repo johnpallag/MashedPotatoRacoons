@@ -8,7 +8,7 @@ Better navigation saving.  Showing viruses on map.  Infect button working.  Poin
 
 Sophia - 
          
-Xu - 
+Xu - Update profile page and css file
 
 
 
