@@ -65,7 +65,6 @@
         <div class="container">
             <div class="intro-text">
                 <h4>Choose Your Virus!</h4>
-                <h6>Choose and personalize your virus to take over the world!</h6>
                 <p>Your Virus</p>
                 <div class="row">
                 <div class="col s6">
@@ -82,9 +81,9 @@
 		        </br>
                 </br>
                 <form id="myForm">
-                    <div class="row">
-                        <!-- Sneezer -->
-                        <div class="col s6">
+                    <div class="carousel carousel-slider center" data-indicators="true">
+                    <!-- Sneezer -->
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Sneezer</span>
                                     <div class="card-image">
@@ -95,9 +94,9 @@
                                 <p><small>Distance to Infect: 5 ft</small></p>
                                 <p><small>Time infected: 1 day</small></p>
                             </div>
-                        </div>
+                        <div>
                         <!-- Achoo -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Achoo</span>
                                 <div class="card-image">
@@ -111,10 +110,8 @@
                                 <p><small>Time infected: 1 day</small></p>
                             </div>
                         </div>
-                    </div>
-                     <div class="row">
                         <!-- Virus 3 -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Virus 3</span>
                                     <div class="card-image">
@@ -127,7 +124,7 @@
                             </div>
                         </div>
                         <!-- Virus 4 -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Virus 4</span>
                                 <div class="card-image">
@@ -139,10 +136,8 @@
                                 <p><small>Time infected: 1 day</small></p>
                             </div>
                         </div>
-                    </div>
-                     <div class="row">
                         <!-- Virus 5 -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Virus 5</span>
                                     <div class="card-image">
@@ -155,7 +150,7 @@
                             </div>
                         </div>
                         <!-- Virus 6 -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Virus 6</span>
                                 <div class="card-image">
@@ -167,10 +162,8 @@
                                 <p><small>Time infected: 1 day</small></p>
                             </div>
                         </div>
-                    </div>
-                     <div class="row">
                         <!-- Virus 7 -->
-                        <div class="col s6">
+                        <div class="carousel-item red white-text" href="#one!">
                             <div class="card">
                                 <span class="card-title">Virus 7</span>
                                     <div class="card-image">
@@ -182,19 +175,6 @@
                                 <p><small>Time infected: 1 day</small></p>
                             </div>
                         </div>
-                        <!-- Sneezer -->
-                      <!--  <div class="col s6">
-                            <div class="card">
-                                <span class="card-title">Achoo</span>
-                                <div class="card-image">
-                                    <button type='button' onClick="changeImage('./img/achoo.png')">
-                                        <img src="./img/achoo.png">
-                                    </button>
-                                </div>
-                                <p><small>Distance to Infect: 5 ft</small></p>
-                                <p><small>Time infected: 1 day</small></p>
-                            </div>
-                        </div> -->
                     </div>
                 </form>
             </div>
@@ -203,10 +183,11 @@
     </body>
 
     <script>
-    function changeImage(imagelink)
-    {
+    function changeImage(imagelink){
         document.getElementById('yourvirus').src = imagelink;
     }
-
+    
+     $('.carousel.carousel-slider').carousel({fullWidth: true});
     </script>
 </html>
+

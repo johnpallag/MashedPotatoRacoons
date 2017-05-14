@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Epidemic Go</title>
+        <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+        <link href="css/style.css" rel="stylesheet"/>
+        <link rel="icon" href="images/0.png"/>
+        <script src="js/style.js"></script>
+        <style>
+        .blue.lighten-1 {
+            background-color: #a04799 !important;
+        }
+        </style>
+</head>
+    
+    <body>
+        <!--Navbar & Sidebar-->
+        <nav>
+            <div class="nav-wrapper blue lighten-1">
+                <a href="#" class="brand-logo center">Epidemic Go</a>
+                <a href="profile.html"><i class="material-icons right">perm_identity</i></a>
+                <ul id="slide-out" class="side-nav">
+                    <li><div class="userView">
+                        <div class="background blue"></div>
+                        <a href="#!user"><img class="circle" src="images/profile.png"></a>
+                        <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
+                        <div class="levelup">
+                            <div class="determinate" style="width: 70%"></div>
+                        </div>
+                        <a href="#!email"><span class="white-text">level 6</span></a>
+                    </div></li>
+
+                    <li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
+                    <li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+                    <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
+                    <li><a class="waves-effect" href="#!">Setting</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+        <!-- Viruses -->
+        <div class="container">
+            <div class="intro-text">
+                <h4>Choose Your Virus!</h4>
+                <p>Your Virus</p>
+            </div>    
+                <img class="responsive-img" id="yourvirus" src="./img/sneezer_3.png" style="height:150px">
+                <p id="yourdistance"> Distance Infected: 10 ft</p>
+                <p id="yourinfection"> Time infected: 1 day</p>
+                <form id="myForm">
+                    <div class="carousel">
+                        <a class="carousel-item" href="#one!">
+                            <div class="row">
+                            <img class="responsive-img" src="./img/sneezer_3.png" style="max-width: 70%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/sneezer_3.png', 'Distance to Infect: 5 ft', 'Time Infected: 3 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#two!">
+                            <div class="row">
+                            <img src="./img/achoo.png" style="max-width: 70%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/achoo.png', 'Distance to Infect: 20 ft', 'Time Infected: 2 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#three!">
+                            <div class="row">
+                            <img src="./img/virus_2.png" style="max-width: 60%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/virus_2.png', 'Distance to Infect: 40 ft', 'Time Infected: 4 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#four!">
+                            <div class="row">
+                            <img src="./img/coffee.png" style="max-width: 60%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/coffee.png', 'Distance to Infect: 1 ft', 'Time Infected: 10 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#five!">
+                            <div class="row">
+                            <img src="./img/Virus_6.png" style="max-width: 40%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/Virus_6.png', 'Distance to Infect: 30 ft', 'Time Infected: 1.5 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#six!">
+                            <div class="row">
+                            <img src="./img/crazy_virus_for_photoshop.png" style="max-width: 60%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/crazy_virus_for_photoshop.png', 'Distance to Infect: 35 ft', 'Time Infected: 2.5 days')">Choose</button>
+                            </div>
+                        </a>
+                        <a class="carousel-item" href="#seven!">
+                            <div class="row">
+                            <img src="./img/creeper.png" style="max-width: 60%">
+                            </div>
+                            <div class="row">
+                            <button type='button' onClick="changeImage('./img/creeper.png', 'Distance to Infect: 25 ft', 'Time Infected: 4 days')">Choose</button>
+                            </div>
+                        </a>
+                    </div>
+                </form>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                dist:0,
+                shift:0,
+                padding:0,
+
+            });
+
+        });
+    
+        function changeImage(imagelink, distance, infection){
+            document.getElementById('yourvirus').src = imagelink;
+            document.getElementById('yourdistance').innerHTML = distance;
+            document.getElementById('yourinfection').innerHTML = infection;
+        }
+        
+    </script>
+</html>
+
