@@ -17,6 +17,14 @@ var circles = {};
 var heatmap = null;
 var heatmapData = {};
 
+function signup(email, password, virus){
+  socket.emit("signup", JSON.stringify({
+    email: email,
+    password: password,
+    virus: virus
+  }));
+}
+
 function getPosition(callback) {
   setTimeout(function() {
     getPosition(callback);
@@ -49,6 +57,9 @@ function hexToRGB(hex, alpha) {
 }
 
 function infect() {
+  socket.on("success",function(json){
+    console.log(json);
+  });
   socket.emit("infect", JSON.stringify({
     id: id
   }));

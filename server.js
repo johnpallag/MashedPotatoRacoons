@@ -17,17 +17,52 @@ const io = socketIO(server);
 var players = {};
 
 io.on('connection', function(socket){
-  socket.on('joined', function(json){
+  socket.on('signup', function(json){
+    const data = JSON.parse(json);
+    if(!data.email) {
+      socket.emit('error', "Missing email");
+    } else if(!data.password){
+      socket.emit('error', "Missing password");
+    } else if(!data.virus){
+      socket.emit('error', "Missing virus details");
+    } else {
+      const player = Object.keys(players).filter(function(id){
+        return players[id].email.toLowerCase() === data.email.toLowerCase();
+      })[0];
+      if(player){
+        socket.emit('error', "Account already exists");
+      } else {
+        const id = "ep" + Math.floor(Math.random() * 100000);
+        var newVirus = new Virus(id, data.virus);
+        var newPlayer = new Player(id, data.email, data.password, newVirus);
+        players[id] = newPlayer;
+        socket.emit('success', JSON.stringify(newPlayer));
+      }
+    }
+  });
+  socket.on('signin', function(json){
+    const data = JSON.parse(json);
+    const player = Object.keys(players).filter(function(id){
+      return players[id].email.toLowerCase() === data.email.toLowerCase();
+    })[0];
+    if(!player){
+      socket.emit('error', "Account not found");
+    } else {
+      if(players[player].password === data.password){
+        socket.emit('success', JSON.stringify(players[player]));
+      } else {
+        socket.emit('error', "Incorrect password");
+      }
+    }
+  });
+  socket.on('authenticate', function(json){
     const data = JSON.parse(json);
     const id = data.id;
-    const virusParams = data.virus;
-    if(!id || players[id] || !virusParams) {
-      return;
+    if(!players[id]){
+      socket.emit('error', "Invalid id");
+    } else {
+      socket.emit('success', JSON.stringify(players[id]));
     }
-    const virus = new Virus(id, virusParams);
-    const player = new Player(id, virus);
-    players[id] = player;
-    io.emit('data', JSON.stringify(players));
   });
   socket.on('updateLocation', function(json){
     const data = JSON.parse(json);
