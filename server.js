@@ -15,26 +15,32 @@ const server = express()
 const io = socketIO(server);
 
 var players = {};
+var logins = {};
 
 io.on('connection', function(socket){
   socket.on('signup', function(json){
     const data = JSON.parse(json);
     if(!data.email) {
-      socket.emit('error', "Missing email");
+      socket.emit('displayError', "Missing email");
     } else if(!data.password){
-      socket.emit('error', "Missing password");
+      socket.emit('displayError', "Missing password");
     } else if(!data.virus){
-      socket.emit('error', "Missing virus details");
+      socket.emit('displayError', "Missing virus details");
     } else {
-      const player = Object.keys(players).filter(function(id){
-        return players[id].email.toLowerCase() === data.email.toLowerCase();
+      const login = Object.keys(logins).filter(function(id){
+        return logins[id].email.toLowerCase() === data.email.toLowerCase();
       })[0];
-      if(player){
-        socket.emit('error', "Account already exists");
+      if(login){
+        socket.emit('displayError', "Account already exists");
       } else {
         const id = "ep" + Math.floor(Math.random() * 100000);
         var newVirus = new Virus(id, data.virus);
-        var newPlayer = new Player(id, data.email, data.password, newVirus);
+        var newPlayer = new Player(id, newVirus);
+        logins[id] = {
+          id: id,
+          email: data.email,
+          password: data.password
+        };
         players[id] = newPlayer;
         socket.emit('success', JSON.stringify(newPlayer));
       }
@@ -42,16 +48,16 @@ io.on('connection', function(socket){
   });
   socket.on('signin', function(json){
     const data = JSON.parse(json);
-    const player = Object.keys(players).filter(function(id){
-      return players[id].email.toLowerCase() === data.email.toLowerCase();
+    const login = Object.keys(logins).filter(function(id){
+      return logins[id].email.toLowerCase() === data.email.toLowerCase();
     })[0];
-    if(!player){
-      socket.emit('error', "Account not found");
+    if(!login){
+      socket.emit('displayError', "Account not found");
     } else {
-      if(players[player].password === data.password){
-        socket.emit('success', JSON.stringify(players[player]));
+      if(logins[login].password === data.password){
+        socket.emit('success', JSON.stringify(players[login]));
       } else {
-        socket.emit('error', "Incorrect password");
+        socket.emit('displayError', "Incorrect password");
       }
     }
   });
@@ -59,7 +65,7 @@ io.on('connection', function(socket){
     const data = JSON.parse(json);
     const id = data.id;
     if(!players[id]){
-      socket.emit('error', "Invalid id");
+      socket.emit('displayError', "Invalid id");
     } else {
       socket.emit('success', JSON.stringify(players[id]));
     }

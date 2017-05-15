@@ -1,13 +1,11 @@
 "use strict";
 
-const Player = function(id, email, password, virus){
+const Player = function(id, virus){
   this.id = id;
   this.virus = virus;
   this.viruses = [];
   this.location = {};
   this.history = [];
-  this.email = email;
-  this.password = password;
 };
 
 Player.prototype.updateLocation = function(loc){
