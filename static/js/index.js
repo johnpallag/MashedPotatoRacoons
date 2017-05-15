@@ -118,6 +118,7 @@ function getRandomInt(min, max) {
 $(document).ready(function() {
   $("#Infect-button").on('click', infect);
   $(".button-collapse").sideNav();
+    
   socket.on("data", function(evt) {
     players = JSON.parse(evt);
     resetMarkers();
