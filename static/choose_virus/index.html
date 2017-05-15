@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="en">
-    <head>
+<html>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
         <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/custom.css" rel="stylesheet">
+        <link href="../css/custom.css" rel="stylesheet">
         <!--Import Google Icon Font-->
         <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Let browser know website is optimized for mobile-->
@@ -25,352 +25,176 @@
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-        <script src="js/index.js"></script>
-        <link href="css/style.css" rel="stylesheet"/>
+        <script src="../js/index.js"></script>
+        <link href="../css/style.css" rel="stylesheet"/>
+        <link rel="icon" href="../images/0.png"/>
+        <script src="../js/style.js"></script>
 
-    </head>
-    
-    <!-- Body -->
-    <body>
-        <!--Navbar & Sidebar-->
-        <nav>
-            <div class="nav-wrapper blue lighten-1">
-                <a href="#" class="brand-logo center">Epidemic Go</a>
-                <a href="profile.html"><i class="material-icons right">perm_identity</i></a>
+	<!--Scripts for carousal-->
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                dist:0,
+                shift:0,
+                padding:0,
+            });
+        });
 
-                <ul id="slide-out" class="side-nav">
-                    <li><div class="userView">
+        function changeImage(imagelink, distance, infection){
+            document.getElementById('yourvirus').src = imagelink;
+            document.getElementById('yourdistance').innerHTML = distance;
+            document.getElementById('yourinfection').innerHTML = infection;
+        }
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+
+    </script>
+        
+        <!--Body of page-->
+        <style>
+            .blue.lighten-1 {
+                background-color: #a04799 !important;
+            }
+
+	        body {
+                background-color: #d1c4e9;
+            }
+            .carousel .carousel-item {
+            height:350px !important;
+            width:110px !important;
+            }
+        </style>
+</head>
+<body>
+
+    <!--Navbar & Sidebar-->
+    <nav>
+        <div class="nav-wrapper blue lighten-1">
+            <a href="#" class="brand-logo center">Epidemic Go</a>
+            <a href="profile.html"><i class="material-icons right">perm_identity</i></a>
+
+            <ul id="slide-out" class="side-nav">
+                <li><div class="userView">
                     <div class="background blue"></div>
-
-                    <a href="#!user"><img class="circle" src="images/profile.png"></a>
+                    <a href="#!user"><img class="circle" src="../images/profile.png"></a>
                     <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
                     <div class="levelup">
                         <div class="determinate" style="width: 70%"></div>
                     </div>
                     <a href="#!email"><span class="white-text">level 6</span></a>
-                    </div></li>
+                </div></li>
 
-                    <li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
-                    <li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
-                    <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
-                    <li><div class="divider"></div></li>
-                    <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
-                    <li><a class="waves-effect" href="#!">Setting</a></li>
-                </ul>
-                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                <li><a href="../landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
+                <li><a href="../index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+                <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="../howtoplay.html">How to play</a></li>
+                <li><a class="waves-effect" href="#!">Setting</a></li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <!-- Viruses -->
+    <div class="container">
+        <div class="intro-text">
+            <h5><center>Choose Your Virus</center></h5>
+            <div class="row">
+                <div class="col s6">
+                <p><center>Your Virus</center></p>
+                </div>
             </div>
-        </nav>
-
-        <!-- Viruses -->
-        <div class="container">
-            <div class="intro-text">
-                <h4>Choose Your Virus!</h4>
-                <h6>Choose and personalize your virus to take over the world!</h6>
-                <p>Your Virus</p>
-                <img class="responsive-img" id="yourvirus" src="./img/sneezer_3.png" style="height:150px";>
-                </br>
-                </br>
-                <form id="myForm">
+        </div>    
+        <div class="row">
+            <div class="col s6">
+                <center><img class="responsive-img" id="yourvirus" src="./img/virus_12.png"></center>
+            </div>
+            <div class="col s6">
+                <p id="yourdistance"> Distanced: 10 ft</p>
+                <p id="yourinfection"> Time: 1 day</p>
+                <a class="responsive-btn" href="#play">
+                    <center>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>Choose Virus</button>
+                    </center>
+                </a>
+            </div>
+        </div>
+        <form id="myForm">
+            <div class="carousel">
+                <a class="carousel-item" href="#one!">
                     <div class="row">
-                        <!-- Sneezer -->
-                        <div class="col s4">
-                            <p class="center-align">Sneezer</p>
-                            <button type='button' onClick="changeImage('./img/sneezer_3.png')">
-                                <img class="responsive-img" src="./img/sneezer_3.png" />
-                            </button>
-                        </div>
-                        <!-- Achoo -->
-                        <div class="col s4">
-                            <p class="center-align">Achoo</p>
-                            <button type='button' onClick="changeImage('./img/achoo.png')">
-                                <img class="responsive-img" src="./img/achoo.png" />
-                            </button>
-                        </div>
-                        <!-- Puke Machine -->
-                        <div class="col s4">
-                            <p class="center-align">Virus 3</p>
-                            <button type='button' onClick="changeImage('./img/virus_2.png')">
-                                <img class="responsive-img" src="./img/virus_2.png" />
-                            </button>
-                        </div>
+                    <img src="./img/virus_1.png">
                     </div>
                     <div class="row">
-                        <div class="col s4">
-                            <div class="center-align">
-                                <a class="responsive-btn" href="#sneezer">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col s4">
-                            <div class="center-align">
-                                <a class="responsive-btn" href="#achoo">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col s4">
-                            <div class="center-align">
-                                <a class="responsive-btn" href="#pukemachine">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_12.png', 'Distance: 5 ft', 'Time: 3 days')">View</button>
+                    </div>
+                </a>
+                <a class="carousel-item" href="#two!">
+                    <div class="row">
+                    <img  src="./img/virus_2.png">
                     </div>
                     <div class="row">
-                        <!-- Diarrhea Dave -->
-                        <div class="col s4">
-                            <p class="center-align">Virus 4</p>
-                            <button type='button' onClick="changeImage('./img/coffee.png')">
-                                <img class="responsive-img" src="./img/coffee.png"/>
-                            <button>
-                        </div>
-                        <!-- Virus 5 -->
-                        <div class="col s4">
-                            <p class="center-align">Virus 5</p>
-                            <button type='button' onClick="changeImage('./img/Virus_6.png')">
-                                <img class="responsive-img" src="./img/Virus_6.png" />
-                            </button>
-                        </div>
-                        <!-- Virus 6 -->
-                        <div class="col s4">
-                            <p class="center-align">Virus 6</p>
-                            <button type='button' onClick="changeImage('./img/crazy_virus_for_photoshop.png')">
-                                <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png" />
-                            </button>
-                        </div>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_22.png', 'Distance: 20 ft', 'Time: 2 days')">View</button>
+                    </div>
+                </a>
+                <a class="carousel-item" href="#three!">
+                    <div class="row">
+                    <img src="./img/virus_3.png">
                     </div>
                     <div class="row">
-                        <div class="col s4">
-                            <div class="center-align">
-                                <a class="responsive-btn" href="#diarrheadave">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col s4">
-                             <div class="center-align">
-                                <a class="responsive-btn" href="#virus5">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col s4">
-                            <div class="center-align">
-                                <a class="responsive-btn" href="#virus6">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_32.png', 'Distance: 40 ft', 'Time: 4 days')">View</button>
+                    </div>
+                </a>
+                <a class="carousel-item" href="#four!">
+                    <div class="row">
+                    <img src="./img/virus_4.png">
                     </div>
                     <div class="row">
-                        <!-- Virus 7 -->
-                        <div class="col s4">
-                            <p class="center-align">Virus 7</p>
-                            <button type='button' onClick="changeImage('./img/creeper.png')">
-                                <img class="responsive-img" src="./img/creeper.png" />
-                            </button>
-                        </div>
-                        <div class="col s4">
-                        </div>
-                        <div class="col s4">
-                        </div>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_42.png', 'Distance: 1 ft', 'Time: 10 days')">View</button>
+                    </div>
+                </a>
+                <a class="carousel-item" href="#five!">
+                    <div class="row">
+                    <img src="./img/virus_5.png">
                     </div>
                     <div class="row">
-                        <div class="col s4">
-                             <div class="center-align">
-                                <a class="responsive-btn" href="#virus7">
-                                    <button type='button'>Stats</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col s4">
-                        </div>
-                        <div class="col s4">
-                        </div>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_52.png', 'Distance: 30 ft', 'Time: 1.5 days')">View</button>
                     </div>
-                </form>
+                </a>
+                <a class="carousel-item" href="#six!">
+                    <div class="row">
+                    <img src="./img/virus_6.png">
+                    </div>
+                    <div class="row">
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_62.png', 'Distance: 35 ft', 'Time: 2.5 days')">View</button>
+                    </div>
+                </a>
+                <a class="carousel-item" href="#seven!">
+                    <div class="row">
+                    <img src="./img/virus_7.png">
+                    </div>
+                    <div class="row">
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_72.png', 'Distance: 25 ft', 'Time: 4 days')">View</button>
+                    </div>
+                </a>
             </div>
-         </div>
-    
-    </body>
-
-
-<!-- CSS for Modals -->
-<style>
-    .modal { width: 75% !important ; max-height: 100% !important }
-</style>
-
-<!--Modals-->
-
-<!-- Sneezer Modal -->
-<div id="sneezer" class="modal">
-    <div class="modal-content">
-        <h4>Sneezer</h4>
-        <img class="responsive-img" src="./img/sneezer_3.png" >
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
+        </form>
     </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
+</body>
+
+<!-- Modal to Play -->
+<div id="play" class="modal deep-purple lighten-4">
+    <div class="modal-content deep-purple lighten-4">
+        <h4>Your Chosen Virus is:</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer deep-purple lighten-4">
+        <a class="left waves-effect waves-light btn purple lighten-1 white-text" type='button' href="./index.html" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="right waves-effect waves-light btn purple lighten-1 white-text" type='button' href="../index.html" class="modal-action modal-close waves-effect waves-green btn-flat">Continue</a>
     </div>
 </div>
 
-<!-- Achoo Modal -->
-<div id="achoo" class="modal">
-    <div class="modal-content">
-        <h4>Achoo</h4>
-        <img class="responsive-img" src="./img/achoo.png" >
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/achoo.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Puke Machine Modal -->
-<div id="pukemachine" class="modal">
-    <div class="modal-content">
-        <h4>Puke Machine</h4>
-        <img class="responsive-img" src="./img/virus_2.png">
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/virus_2.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Diarrhea Dave Modal -->
-<div id="diarrheadave" class="modal">
-    <div class="modal-content">
-        <h4>Diarrhea Dave</h4>
-        <img class="responsive-img" src="./img/coffee.png">
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/coffee.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Virus 5 Modal -->
-<div id="virus5" class="modal">
-    <div class="modal-content">
-        <h4>Virus 5</h4>
-        <img class="responsive-img" src="./img/Virus_6.png">
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/Virus_6.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div> 
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Virus 6 Modal -->
-<div id="virus6" class="modal">
-    <div class="modal-content">
-        <h4>Virus 6</h4>
-        <img class="responsive-img" src="./img/crazy_virus_for_photoshop.png">
-        </br>
-        </br>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/crazy_virus_for_photoshop.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Virus 7 Modal -->
-<div id="virus7" class="modal">
-    <div class="modal-content">
-        <h4>Virus 7</h4>
-        <img class="responsive-img" src="./img/creeper.png">
-        </br>
-        </br>
-        <p><b>Life Story:</b> Sneezer grew up as an outcast. All of his relatives infect humans with the common cold
-              while he only causes sneeze attacks. Sneezer wants to prove he is the best virus by infecting the whole world!</p>
-        <p><b>Distance to Infect:</b> 20 feet</p>
-        <p><b>Incubation period:</b> 1 day</p>
-        <p><b>Time Infected:</b> 5 days</p>
-    </div>
-    <div class="modal-footer">
-        <div class="row">
-            <div class="col s6">
-                <a href="#!" onClick="changeImage('./img/creeper.png')" class="modal-action modal-close waves-effect waves-green btn-flat">Choose</a>
-            </div>
-            <div class="col s6">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>    
-        </div>
-    </div>
-</div>
-
-
-<script>
-  $(document).ready(function(){
-    $('.modal').modal();
-  });
-
-  function changeImage(imagelink)
-  {
-    document.getElementById('yourvirus').src = imagelink;
-   }
-
-</script>
 </html>
+
