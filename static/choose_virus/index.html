@@ -29,6 +29,27 @@
         <link href="css/style.css" rel="stylesheet"/>
         <link rel="icon" href="images/0.png"/>
         <script src="js/style.js"></script>
+
+	<!--Scripts for carousal-->
+    <script>
+        $(document).ready(function(){
+            $('.carousel').carousel({
+                dist:0,
+                shift:0,
+                padding:0,
+            });
+        });
+
+        function changeImage(imagelink, distance, infection){
+            document.getElementById('yourvirus').src = imagelink;
+            document.getElementById('yourdistance').innerHTML = distance;
+            document.getElementById('yourinfection').innerHTML = infection;
+        }
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    </script>
         
         <!--Body of page-->
         <style>
@@ -39,7 +60,10 @@
 	        body {
                 background-color: #d1c4e9;
             }
-
+            .carousel .carousel-item {
+            height:350px !important;
+            width:110px !important;
+            }
         </style>
 </head>
 <body>
@@ -75,26 +99,23 @@
     <!-- Viruses -->
     <div class="container">
         <div class="intro-text">
-            <h4><center>Choose Your Virus</center></h4>
+            <h5><center>Choose Your Virus</center></h5>
             <div class="row">
                 <div class="col s6">
                 <p><center>Your Virus</center></p>
-                </div>
-                <div class="col s6">
-                <p><center>Stats</center></p>
                 </div>
             </div>
         </div>    
         <div class="row">
             <div class="col s6">
-                <img class="responsive-img" id="yourvirus" src="./img/sneezer_3.png">
+                <center><img class="responsive-img" id="yourvirus" src="./img/virus_12.png"></center>
             </div>
             <div class="col s6">
-                <p id="yourdistance"> Distance Infected: 10 ft</p>
-                <p id="yourinfection"> Time infected: 1 day</p>
+                <p id="yourdistance"> Distanced: 10 ft</p>
+                <p id="yourinfection"> Time: 1 day</p>
                 <a class="responsive-btn" href="#play">
                     <center>
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>Play!</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>Choose Virus</button>
                     </center>
                 </a>
             </div>
@@ -103,58 +124,58 @@
             <div class="carousel">
                 <a class="carousel-item" href="#one!">
                     <div class="row">
-                    <img class="responsive-img" src="./img/sneezer_3.png" style="max-width: 70%">
+                    <img src="./img/virus_1.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/sneezer_3.png', 'Distance to Infect: 5 ft', 'Time Infected: 3 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_12.png', 'Distance: 5 ft', 'Time: 3 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#two!">
                     <div class="row">
-                    <img src="./img/achoo.png" style="max-width: 70%">
+                    <img  src="./img/virus_2.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/achoo.png', 'Distance to Infect: 20 ft', 'Time Infected: 2 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_22.png', 'Distance: 20 ft', 'Time: 2 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#three!">
                     <div class="row">
-                    <img src="./img/virus_2.png" style="max-width: 60%">
+                    <img src="./img/virus_3.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_2.png', 'Distance to Infect: 40 ft', 'Time Infected: 4 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_32.png', 'Distance: 40 ft', 'Time: 4 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#four!">
                     <div class="row">
-                    <img src="./img/coffee.png" style="max-width: 60%">
+                    <img src="./img/virus_4.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/coffee.png', 'Distance to Infect: 1 ft', 'Time Infected: 10 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_42.png', 'Distance: 1 ft', 'Time: 10 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#five!">
                     <div class="row">
-                    <img src="./img/Virus_6.png" style="max-width: 40%">
+                    <img src="./img/virus_5.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/Virus_6.png', 'Distance to Infect: 30 ft', 'Time Infected: 1.5 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_52.png', 'Distance: 30 ft', 'Time: 1.5 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#six!">
                     <div class="row">
-                    <img src="./img/crazy_virus_for_photoshop.png" style="max-width: 60%">
+                    <img src="./img/virus_6.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/crazy_virus_for_photoshop.png', 'Distance to Infect: 35 ft', 'Time Infected: 2.5 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_62.png', 'Distance: 35 ft', 'Time: 2.5 days')">View</button>
                     </div>
                 </a>
                 <a class="carousel-item" href="#seven!">
                     <div class="row">
-                    <img src="./img/creeper.png" style="max-width: 60%">
+                    <img src="./img/virus_7.png">
                     </div>
                     <div class="row">
-                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/creeper.png', 'Distance to Infect: 25 ft', 'Time Infected: 4 days')">Choose</button>
+                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' onClick="changeImage('./img/virus_72.png', 'Distance: 25 ft', 'Time: 4 days')">View</button>
                     </div>
                 </a>
             </div>
@@ -173,29 +194,6 @@
         <a class="right waves-effect waves-light btn purple lighten-1 white-text" type='button' href="../index.html" class="modal-action modal-close waves-effect waves-green btn-flat">Continue</a>
     </div>
 </div>
-
-<!--Scripts for carousal-->
-<script>
-    $(document).ready(function(){
-        $('.carousel').carousel({
-            dist:0,
-            shift:0,
-            padding:0,
-
-        });
-
-    });
-
-    function changeImage(imagelink, distance, infection){
-        document.getElementById('yourvirus').src = imagelink;
-        document.getElementById('yourdistance').innerHTML = distance;
-        document.getElementById('yourinfection').innerHTML = infection;
-    }
-
-    $(document).ready(function(){
-        $('.modal').modal();
-    });
-                      
 </script>
 </html>
 
