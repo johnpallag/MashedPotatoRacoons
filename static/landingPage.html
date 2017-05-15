@@ -1,72 +1,91 @@
+<!doctype html>
 <html> 
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<title>Epidemic Go</title>
-		<script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
-		<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Epidemic Go</title>
+        <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-		<!-- Custom CSS -->
-		<link href="css/landingstyle.css" rel="stylesheet">
-		<link href="css/custom.css" rel="stylesheet">
-		<!--Import Google Icon Font-->
-		<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<!--Let browser know website is optimized for mobile-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Custom CSS -->
+        <link href="css/custom.css" rel="stylesheet">
+        <!--Import Google Icon Font-->
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- Compiled and minified CSS -->
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
-		<!--Import jQuery before materialize.js-->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-	  <!-- Compiled and minified JavaScript -->
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-		<script src="js/index.js"></script>
-		<link href="css/style.css" rel="stylesheet"/>
-	</head>
-	<body>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+        <link href="css/style.css" rel="stylesheet"/>
+        <link rel="icon" href="images/0.png"/>
+        <script src="js/style.js"></script>
+
+        <!--Body of page-->
+        <style>
+            .blue.lighten-1 {
+                background-color: #a04799 !important;
+            }
+
+                body {
+                background-color: #d1c4e9;
+            }
+       </style>
+</head>
+<body>
+
+    <!--Navbar & Sidebar-->
+    <nav>
+        <div class="nav-wrapper blue lighten-1">
+            <a href="#" class="brand-logo center">Epidemic Go</a>
+            <a href="profile.html"><i class="material-icons right">perm_identity</i></a>
+
+            <ul id="slide-out" class="side-nav">
+                <li><div class="userView">
+                    <div class="background blue"></div>
+                    <a href="#!user"><img class="circle" src="images/profile.png"></a>
+                    <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
+                    <div class="levelup">
+                        <div class="determinate" style="width: 70%"></div>
+                    </div>
+                    <a href="#!email"><span class="white-text">level 6</span></a>
+                </div></li>
+
+                <li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
+                <li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+                <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
+                <li><a class="waves-effect" href="#!">Setting</a></li>
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
 	
-	<div class = "login"> 
-		
-		 <p class="lead">
-		    <a class="btn btn-primary btn-lg" id= "login" href="#" role="button">Login</a>
-		  </p>
-	</div>	
-
-	<div>	
-	  <div class="jumbotron">
-		  <h1 class="display-3">EpidemicGo!</h1>
-		  <p class="lead">Being sick can be  fun! Now you and all your friends have be sick! </p>
-		  <hr class="my-4">
-		  <p class="lead">
-		    <a class="btn btn-primary btn-lg" id= "newgame" href="#" role="button">New Game</a>
-		  </p>
-		  <p class="lead">
-		    <a class="btn btn-primary btn-lg" id= "howtoplay" href="#" role="button">How to Play</a>
-		  </p>
-		  <p class="lead">
-		    <a class="btn btn-primary btn-lg" id= "leaderboards" href="./leaderboards.html" role="button">Leaderboards</a>
-		  </p>
-
-	 </div>
-
-
-
-
-
-
-	</body>
-
-
-
-
-
-
-
-
+    <h1 class="display-3">EpidemicGo!</h1>
+	<p class="lead">Being sick can be  fun! Now you and all your friends have be sick! </p>
+    <hr class="my-4">
+    <a class="responsive-btn" href="#!">
+        <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>Login</button>
+    </a>
+    <a class="responsive-btn" href="./choose_virus/index.html">
+        <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>New Game</button>
+    </a>
+    <a class="responsive-btn" href="#!">
+        <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>How to Play</button>
+    </a>
+    <a class="responsive-btn" href="./leaderboards.html">
+        <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button'>Leaderboards</button>
+    </a>
+</body>
 
 </html>
