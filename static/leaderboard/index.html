@@ -124,9 +124,9 @@
 			var i = 1;
 			leaders.forEach(function(leader){
 				var str = '<li class="collection-item avatar">' +
-					'<img src="../images/' + (leader.virus.image || 0) + '.png" alt="" class="circle"' +  'style="background-color:' + (leader.virus.params.color || 'rgb(100,100,225)') + '">' +
+					'<img src="../images/' + (leader.virus.params.image || 0) + '.png" alt="" class="circle"' +  'style="background-color:' + (leader.virus.params.color || 'rgb(100,100,225)') + '">' +
 					'<span class="title">' + (leader.name || "Unknown") + '</span>' +
-					'<p>' + (leader.points || 0) + ' Points</p>' +
+					'<p>' + (leader.score || 0) + ' Points</p>' +
 					'<a href="#!" class="secondary-content">' + ordinal_suffix_of(i++) + '</a>' +
 					'</li>'
 				$("#leaderboard").append(str);

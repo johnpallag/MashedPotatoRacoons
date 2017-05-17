@@ -16,6 +16,22 @@ var circles = {};
 var heatmap = null;
 var heatmapData = {};
 
+function updateScreen(){
+  $("#viruses").html("");
+  $("#points").html("0 points");
+  if(players && player){
+    player.viruses.forEach(function(virus){
+      var vDiv = $("<div>");
+      vDiv.css("background-color", virus.params.color);
+      vDiv.css("background-image", "url(" + location.href + '/images/' + (virus.params.image||0) + '.png)');
+      vDiv.addClass("virusIcon");
+      $("#viruses").append(vDiv);
+    });
+    player.score = player.score || 0;
+    $("#points").html(player.score + " points");
+  }
+}
+
 function leaderboard(){
   var arr = Object.keys(players).sort(function(a,b){
     return (players[a].points || 0) > (players[b].points || 0);
@@ -139,19 +155,7 @@ function onLoggedIn(){
       }));
     }
   });
-  $("#viruses").html("");
-  $("#points").html("0 points");
-  if(players && players[player.id]){
-    players[player.id].viruses.forEach(function(virus){
-      var vDiv = $("<div>");
-      vDiv.css("background-color", virus.params.color);
-      vDiv.css("background-image", "url(" + location.href + '/images/' + (virus.params.image||0) + '.png)');
-      vDiv.addClass("virusIcon");
-      $("#viruses").append(vDiv);
-    });
-    players[player.id].score = players[player.id].score || 0;
-    $("#points").html(players[player.id].score + " points");
-  }
+  updateScreen();
 }
 
 function resetMarkers() {
@@ -183,7 +187,7 @@ $(document).ready(function() {
     signup($("#email").val(), $("#password").val(), {
       color: '#'+Math.floor(Math.random()*16777215).toString(16),
       image: getRandomInt(0, 6),
-      theshold: 1
+      theshold: 2
     });
     e.preventDefault();
   });
@@ -197,8 +201,12 @@ $(document).ready(function() {
   });
   socket.on("data", function(evt) {
     players = JSON.parse(evt);
+    if(player){
+      player = players[player.id];
+    }
     resetMarkers();
     resetCircles();
+    updateScreen();
     Object.keys(players).forEach(function(id) {
       if(googleIsLoaded){
         markers[id] = markers[id] || new google.maps.Marker({
