@@ -8,7 +8,7 @@ John - Sign in, sign up, and leaderboard backend and frontend functionality.  Yo
 will remain signed in until you sign out.  Sign up takes an email and password and will do more as we finalize the account
 information.  The leaderboard calls gets the top 10 players.
 
-Sophia - Choose virus edits
+Sophia - Choose virus page matches the theme of epidemic go, changed landing page, switched virus page to have a touch activated carousel of the different virus options where the user can choose a virus and have it updated. Once choosen a modal now pops up to confirm before moving the user to the homepage. Resized images for page through Illustrator.
 
 Xu - Account page and main page redesigns
 
