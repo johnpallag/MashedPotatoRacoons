@@ -1,18 +1,23 @@
 #Infect-button {
-  background-color: rgba(93,56,123,0.9);
-  position: absolute;
-  bottom: 10px;
-  left:50%;
-  font-size: 10px !important;
+    background-color: rgba(93,56,123,0.9);
+    position: absolute;
+    bottom: 15px;
+    line-height: 100px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    left: 50%;
+    font-size: 20px;
 }
 
-#viruses{
+#viruses {
     position: absolute;
-    left: calc(50% - 125px);
+    left: 0;
     bottom: 0;
-    width: 250px;
+    width: 100%;
     height: 50px;
-    background-color: white;
+    text-align: center;
 }
 
 .virusIcon {
@@ -32,8 +37,8 @@
 
 
 .btn-floating.btn-large {
-  width: 70px;
-  height: 70px;
+  width: 100px !important;
+  height: 100px !important;
 }
 
 
@@ -81,7 +86,7 @@ nav .button-collapse i {
 }
 
 .profile{
-    height: 130px !important;   
+    height: 130px !important;
 }
 
 .profile-picture{
@@ -100,7 +105,7 @@ nav .button-collapse i {
 }
 
 .profile-account{
- line-height: 160px;  
+ line-height: 160px;
 }
 
 .achievement-tag{
@@ -111,7 +116,7 @@ nav .button-collapse i {
   border-style: solid;
   border-color: darkgrey;
   background: white;
-    
+
 }
 
 .achievement-text{
@@ -200,13 +205,22 @@ nav .button-collapse i {
 }
 
 .points {
-  background-color: rgba(26,36,79,0.8) !important;   
+  background-color: rgba(26,36,79,0.8) !important;
 }
 
 .viruses {
-    background-color: rgba(93,56,123,0.9) !important;  
+    background-color: rgba(93,56,123,0.9) !important;
 }
 
 .userView{
     background-color: rgba(142,44,137,0.8);
+}
+
+.modal-fixed-center{
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
 }

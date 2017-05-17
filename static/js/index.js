@@ -114,6 +114,8 @@ function initMap() {
 }
 
 function onLoggedIn(){
+  $("#loginmodel").hide();
+  $("#Infect-button").show();
   var gradient = ['rgba(255, 255, 255, 0)',
     hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1),
     hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1)
@@ -143,7 +145,7 @@ function onLoggedIn(){
     players[player.id].viruses.forEach(function(virus){
       var vDiv = $("<div>");
       vDiv.css("background-color", virus.params.color);
-      vDiv.css("background-image", "url(" + location.href + 'images/' + (virus.params.image||0) + '.png)');
+      vDiv.css("background-image", "url(" + location.href + '/images/' + (virus.params.image||0) + '.png)');
       vDiv.addClass("virusIcon");
       $("#viruses").append(vDiv);
     });
@@ -173,12 +175,25 @@ function getRandomInt(min, max) {
 $(document).ready(function() {
   $("#Infect-button").on('click', infect);
   $(".button-collapse").sideNav();
+  $("#signin").on('click',function(e){
+    signin($("#email").val(), $("#password").val());
+    e.preventDefault();
+  });
+  $("#signup").on('click',function(e){
+    signup($("#email").val(), $("#password").val(), {
+      color: '#'+Math.floor(Math.random()*16777215).toString(16),
+      image: getRandomInt(0, 6),
+      theshold: 0.1
+    });
+    e.preventDefault();
+  });
   socket.on("success",function(evt){
     player = JSON.parse(evt);
     onLoggedIn();
   });
   socket.on("displayError", function(evt){
     alert(evt);
+    logout();
   });
   socket.on("data", function(evt) {
     players = JSON.parse(evt);

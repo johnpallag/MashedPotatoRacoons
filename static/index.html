@@ -11,30 +11,30 @@
 	<script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
 	<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="css/custom.css" rel="stylesheet">
 	<!--Import Google Icon Font-->
 	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
 	<!--Import jQuery before materialize.js-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 	<script src="js/index.js"></script>
-	<link href="css/style.css" rel="stylesheet"/>
-	<link rel="icon" href="images/0.png"/>
+	<link href="css/style.css" rel="stylesheet" />
+	<link rel="icon" href="images/0.png" />
 	<script src="js/style.js"></script>
 	<style>
-	.blue.lighten-1 {
-    background-color: #a04799 !important;
-}
+		.blue.lighten-1 {
+			background-color: #a04799 !important;
+		}
 	</style>
+		<!-- Custom CSS -->
+		<link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -45,65 +45,79 @@
 			<a href="#" class="brand-logo center">Epidemic Go</a>
 			<a href="profile.html"><i class="material-icons right">perm_identity</i></a>
 
-            <ul id="slide-out" class="side-nav">
-                <li><div class="userView">
-                <div class="background userView">
+			<ul id="slide-out" class="side-nav">
+				<li>
+					<div class="userView">
+						<a href="#!user"><img class="circle" src="images/profile.png"></a>
+						<a href="#!name"><span class="white-text">Alok Mysore</span></a>
+						<div class="levelup">
+							<div class="determinate" style="width: 70%"></div>
+						</div>
+						<a href="#!email"><span class="white-text">level 6</span></a>
+					</div>
+				</li>
 
-                </div>
+				<li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
+				<li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+				<li><a href="leaderboard"><i class="material-icons">star</i>Leaderboard</a></li>
+			</ul>
 
-                <a href="#!user"><img class="circle" src="images/profile.png"></a>
-                <a href="#!name"><span class="profile-name white-text name">Alok Mysore</span></a>
-                <div class="levelup">
-                    <div class="determinate" style="width: 70%"></div>
-                </div>
-                <a href="#!email"><span class="white-text">level 6</span></a>
-                </div></li>
-
-                <li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
-                <li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
-                <li><a href="#!"><i class="material-icons">person_pin</i>Social</a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="waves-effect" href="howtoplay.html">How to play</a></li>
-                <li><a class="waves-effect" href="#!">Setting</a></li>
-            </ul>
-
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
 
 		</div>
 	</nav>
-	<!--Navbar & Sidebar-->
-    <nav>
-    <div class="nav-wrapper points row">
-        <div class="col s6">
-            <div id="points"></div>
-        </div>
-        <div class="col s6 center">
-            <a class="modal-trigger waves-effect waves-light btn viruses" href="#modal1">Viruses</a>
-        </div>
-        
-    </div>
-    </nav>
-    
-    <div id="modal1" class="modal  modal-fixed-footer">
-    <div class="modal-content">
-      <h4>viruses you are currectly infecting</h4>
-      <div id="viruses"></div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
-        
-        
-        
+
+	<div id="modal1" class="modal  modal-fixed-footer">
+		<div class="modal-content">
+			<h4>viruses you are currectly infecting</h4>
+			<div id="viruses"></div>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+		</div>
+	</div>
+
+	<div id="loginmodel" class="modal modal-fixed-center" style="display:block;">
+		<div class="model-content">
+			<div class="row">
+				<form class="col s12" style="margin-top: 20px;">
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="email" type="email">
+							<label for="email" data-error="wrong" data-success="right">Email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input id="password" type="password">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="row">
+						<button class="btn waves-effect waves-light" name="Sign In" id="signin">Sign In
+					    <i class="material-icons right">send</i>
+					  </button>
+					</div>
+					<div class="row">
+						<p>Don't have an account?</p>
+						<button class="btn waves-effect waves-light" name="Sign Up" id="signup">Sign Up
+					    <i class="material-icons right">send</i>
+					  </button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<div id="map"></div>
-	<a class="btn-floating btn-large waves-effect waves-light" id="Infect-button">Infect!</a>
+	<a class="btn-floating btn-large waves-effect waves-light" id="Infect-button" style="display:none">Infect!</a>
 	<div id="viruses"></div>
 	<div id="points"></div>
 
-    <script>$('.modal').modal();
-    </script>>
+	<script>
+		$('.modal').modal();
+	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBC75EnaIuHo--O2S_dMWNP7WEIsmGZjAg&libraries=visualization&callback=initMap">
 	</script>
 </body>
