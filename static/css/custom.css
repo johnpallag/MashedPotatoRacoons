@@ -232,7 +232,7 @@ nav .button-collapse i {
   font-size: 30px;
   line-height: 44px;
   text-align: center;
-  background-color: #ffccff;
+  background-color:  #d1c4e9;
   margin-top: -33px;
   margin-bottom: -24px;
 
@@ -245,4 +245,16 @@ nav .button-collapse i {
   text-align: center;
   font-size: 30px;
  
+}
+
+.row{
+  width: 100%;
+  text-align: center;
+}
+
+.waves-light{
+display: inline-block;
+background-color: purple;
+
+
 }
