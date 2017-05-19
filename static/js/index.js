@@ -23,7 +23,7 @@ function updateScreen(){
     player.viruses.forEach(function(virus){
       var vDiv = $("<div>");
       vDiv.css("background-color", virus.params.color);
-      vDiv.css("background-image", "url(" + location.href + '/images/' + (virus.params.image||0) + '.png)');
+      vDiv.css("background-image", "url(" + location.href + '/images/virus_' + (virus.params.image||1) + '.png)');
       vDiv.addClass("virusIcon");
       $("#viruses").append(vDiv);
     });
@@ -184,11 +184,7 @@ $(document).ready(function() {
     e.preventDefault();
   });
   $("#signup").on('click',function(e){
-    signup($("#email").val(), $("#password").val(), {
-      color: '#'+Math.floor(Math.random()*16777215).toString(16),
-      image: getRandomInt(0, 6),
-      theshold: 2
-    });
+    location.href = "choose_virus/index.html?signup=true";
     e.preventDefault();
   });
   socket.on("success",function(evt){
@@ -211,7 +207,7 @@ $(document).ready(function() {
       if(googleIsLoaded){
         markers[id] = markers[id] || new google.maps.Marker({
           icon: {
-            url: location.href + 'images/' + (players[id].virus.params.image||0) + '.png',
+            url: location.href + 'images/virus_' + (players[id].virus.params.image||1) + '.png',
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(50, 50)
           }
