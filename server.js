@@ -20,25 +20,25 @@ var logins = {};
 io.on('connection', function(socket){
   socket.on('signup', function(json){
     const data = JSON.parse(json);
-    if(!data.email) {
-      socket.emit('displayError', "Missing email");
+    if(!data.username) {
+      socket.emit('requestError', "Missing username");
     } else if(!data.password){
-      socket.emit('displayError', "Missing password");
+      socket.emit('requestError', "Missing password");
     } else if(!data.virus){
-      socket.emit('displayError', "Missing virus details");
+      socket.emit('requestError', "Missing virus details");
     } else {
       const login = Object.keys(logins).filter(function(id){
-        return logins[id].email.toLowerCase() === data.email.toLowerCase();
+        return logins[id].username.toLowerCase() === data.username.toLowerCase();
       })[0];
       if(login){
-        socket.emit('displayError', "Account already exists");
+        socket.emit('requestError', "Account already exists");
       } else {
         const id = "ep" + Math.floor(Math.random() * 100000);
         var newVirus = new Virus(id, data.virus);
         var newPlayer = new Player(id, newVirus);
         logins[id] = {
           id: id,
-          email: data.email,
+          username: data.username,
           password: data.password
         };
         players[id] = newPlayer;
@@ -49,15 +49,15 @@ io.on('connection', function(socket){
   socket.on('signin', function(json){
     const data = JSON.parse(json);
     const login = Object.keys(logins).filter(function(id){
-      return logins[id].email.toLowerCase() === data.email.toLowerCase();
+      return logins[id].username.toLowerCase() === data.username.toLowerCase();
     })[0];
     if(!login){
-      socket.emit('displayError', "Account not found");
+      socket.emit('requestError', "Account not found");
     } else {
       if(logins[login].password === data.password){
         socket.emit('success', JSON.stringify(players[login]));
       } else {
-        socket.emit('displayError', "Incorrect password");
+        socket.emit('requestError', "Incorrect password");
       }
     }
   });
@@ -65,7 +65,7 @@ io.on('connection', function(socket){
     const data = JSON.parse(json);
     const id = data.id;
     if(!players[id]){
-      socket.emit('displayError', "Invalid id");
+      socket.emit('requestError', "Invalid id");
     } else {
       socket.emit('success', JSON.stringify(players[id]));
     }

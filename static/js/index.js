@@ -1,9 +1,7 @@
 /*global
-io, google, document, navigator, $, window, location, mapStyle, localStorage, alert
+io, google, document, navigator, $, window, location, mapStyle, localStorage, alert, socket, REFRESH_RATE
 */
 "use strict";
-const socket = io();
-const REFRESH_RATE = 1500;
 
 var map;
 var center = null;
