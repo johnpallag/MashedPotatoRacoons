@@ -30,6 +30,10 @@
     background-repeat: no-repeat;
 }
 
+.nav-top {
+    background-color: #a04799;
+}
+
 .btn-floating{
   text-align: center;
 
@@ -87,6 +91,7 @@ nav .button-collapse i {
 
 .profile{
     height: 130px !important;
+    background-color: slategrey;
 }
 
 .profile-picture{
