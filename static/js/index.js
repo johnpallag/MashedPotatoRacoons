@@ -1,5 +1,5 @@
 /*global
-io, google, document, navigator, $, window, location, mapStyle, localStorage, alert, socket, REFRESH_RATE
+io, google, document, navigator, $, window, location, mapStyle, localStorage, alert, socket, REFRESH_RATE, EG
 */
 "use strict";
 
@@ -7,8 +7,6 @@ var map;
 var center = null;
 var googleIsLoaded = false;
 
-var player = null;
-var players = {};
 var markers = {};
 var circles = {};
 var heatmap = null;
@@ -17,55 +15,16 @@ var heatmapData = {};
 function updateScreen(){
   $("#viruses").html("");
   $("#points").html("0 points");
-  if(players && player){
-    player.viruses.forEach(function(virus){
+  if(EG.API.Game.players && EG.API.Account.currentPlayer){
+    EG.API.Account.currentPlayer.viruses.forEach(function(virus){
       var vDiv = $("<div>");
       vDiv.css("background-color", virus.params.color);
       vDiv.css("background-image", "url(" + location.href + '/images/virus_' + (virus.params.image||1) + '.png)');
       vDiv.addClass("virusIcon");
       $("#viruses").append(vDiv);
     });
-    player.score = player.score || 0;
-    $("#points").html(player.score + " points");
-  }
-}
-
-function leaderboard(){
-  var arr = Object.keys(players).sort(function(a,b){
-    return (players[a].points || 0) > (players[b].points || 0);
-  });
-  return arr.map(function(id){
-    return players[id];
-  }).slice(0, 9);
-}
-
-function signup(email, password, virus){
-  localStorage.email = email;
-  localStorage.password = password;
-  socket.emit("signup", JSON.stringify({
-    email: email,
-    password: password,
-    virus: virus
-  }));
-}
-
-function signin(email, password){
-  localStorage.email = email;
-  localStorage.password = password;
-  socket.emit("signin", JSON.stringify({
-    email: email,
-    password: password
-  }));
-}
-
-function logout(){
-  localStorage.removeItem("email");
-  localStorage.removeItem("password");
-}
-
-function authenticate(){
-  if(localStorage.email && localStorage.password){
-    signin(localStorage.email, localStorage.password);
+    EG.API.Account.currentPlayer.score = EG.API.Account.currentPlayer.score || 0;
+    $("#points").html(EG.API.Account.currentPlayer.score + " points");
   }
 }
 
@@ -73,37 +32,7 @@ function getPosition(callback) {
   setTimeout(function() {
     getPosition(callback);
   }, REFRESH_RATE);
-  if (navigator && navigator.geolocation && navigator.geolocation.getCurrentPosition) {
-    navigator.geolocation.getCurrentPosition(function(loc) {
-      callback({
-        lat: loc.coords.latitude,
-        lng: loc.coords.longitude
-      });
-    });
-  } else {
-    callback({
-      lat: 0,
-      lng: 0
-    });
-  }
-}
-
-function hexToRGB(hex, alpha) {
-  var r = parseInt(hex.slice(1, 3), 16),
-    g = parseInt(hex.slice(3, 5), 16),
-    b = parseInt(hex.slice(5, 7), 16);
-
-  if (alpha) {
-    return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
-  } else {
-    return "rgb(" + r + ", " + g + ", " + b + ")";
-  }
-}
-
-function infect() {
-  socket.emit("infect", JSON.stringify({
-    id: player.id
-  }));
+  EG.API.Game.getPosition(callback, console.log);
 }
 
 function initMap() {
@@ -124,15 +53,21 @@ function initMap() {
     map: map,
     radius: 50
   });
-  authenticate();
+  EG.API.Account.authenticate(onLoggedIn);
 }
 
 function onLoggedIn(){
   $("#loginmodel").hide();
   $("#Infect-button").show();
+  var player = EG.API.Account.currentPlayer;
+  player.virus = player.virus || {};
+  player.virus.params = player.virus.params || {};
+  player.virus.color = player.virus.color || EG.API.Util.randColor();
   var gradient = ['rgba(255, 255, 255, 0)',
-    hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1),
-    hexToRGB(player.virus.params.color, 1), hexToRGB(player.virus.params.color, 1)
+    EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
+    EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
+    EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
+    EG.API.Util.hexToRGB(player.virus.params.color, 1)
   ];
   heatmap.set('gradient', gradient);
   if (center) {
@@ -147,10 +82,7 @@ function onLoggedIn(){
         location: new google.maps.LatLng(loc.lat, loc.lng),
         weight: 5
       });
-      socket.emit("updateLocation", JSON.stringify({
-        id: player.id,
-        location: loc
-      }));
+      EG.API.Game.updateLocation();
     }
   });
   updateScreen();
@@ -168,36 +100,18 @@ function resetCircles() {
   });
 }
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
 $(document).ready(function() {
-  $("#Infect-button").on('click', infect);
+  $("#Infect-button").on('click', EG.API.Game.infect);
   $(".button-collapse").sideNav();
   $("#signin").on('click',function(e){
-    signin($("#email").val(), $("#password").val());
+    EG.API.Account.signin($("#email").val(), $("#password").val(), onLoggedIn, alert);
     e.preventDefault();
   });
   $("#signup").on('click',function(e){
     location.href = "choose_virus/index.html?signup=true";
     e.preventDefault();
   });
-  socket.on("success",function(evt){
-    player = JSON.parse(evt);
-    onLoggedIn();
-  });
-  socket.on("displayError", function(evt){
-    alert(evt);
-    logout();
-  });
-  socket.on("data", function(evt) {
-    players = JSON.parse(evt);
-    if(player){
-      player = players[player.id];
-    }
+  EG.API._Callbacks._ondata = function(players){
     resetMarkers();
     resetCircles();
     updateScreen();
@@ -224,5 +138,5 @@ $(document).ready(function() {
           circles[id].setCenter(new google.maps.LatLng(players[id].location));
       }
     });
-  });
+  };
 });

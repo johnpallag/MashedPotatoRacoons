@@ -62,6 +62,7 @@ EG.API = {
     },
     Util: {
         hexToRGB: function(hex, alpha) {
+          if(!hex) return "rgba(0,0,0,1)";
             var r = parseInt(hex.slice(1, 3), 16),
                 g = parseInt(hex.slice(3, 5), 16),
                 b = parseInt(hex.slice(5, 7), 16);
@@ -76,6 +77,9 @@ EG.API = {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min)) + min;
+        },
+        randColor: function(){
+          return '#'+Math.floor(Math.random()*16777215).toString(16);
         }
     },
     Game: {
@@ -87,6 +91,12 @@ EG.API = {
                 id: EG.API.Account.currentPlayer.id
             });
         },
+        updateLocation: function(){
+          socket.emit("updateLocation", JSON.stringify({
+            id: EG.API.Account.currentPlayer.id,
+            location: EG.API.Game.currentLocation
+          }));
+        },
         getLeaderboard: function(callback) {
             callback(Object.keys(EG.API.Game.players).sort(function(a, b) {
                 return (EG.API.Game.players[a].points || 0) < (EG.API.Game.players[b].points || 0);
@@ -97,10 +107,11 @@ EG.API = {
         getPosition: function(onSuccess, onError) {
             if (navigator && navigator.geolocation && navigator.geolocation.getCurrentPosition) {
                 navigator.geolocation.getCurrentPosition(function(loc) {
-                    onSuccess({
+                    EG.API.Game.currentLocation = {
                         lat: loc.coords.latitude,
                         lng: loc.coords.longitude
-                    });
+                    };
+                    onSuccess(EG.API.Game.currentLocation);
                 }, function(error) {
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
@@ -121,12 +132,16 @@ EG.API = {
                 onError("Geolocation is not supported by this device")
             }
         },
-        players: {}
+        players: {},
+        currentLocation: {}
     }
 };
 
 socket.on("data", function(evt) {
   EG.API.Game.players = JSON.parse(evt);
+  if(EG.API.Account.currentPlayer){
+    EG.API.Account.currentPlayer = EG.API.Game.players[EG.API.Account.currentPlayer.id];
+  }
   if(EG.API._Callbacks._ondata) EG.API._Callbacks._ondata(EG.API.Game.players);
 });
 
