@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.blue.lighten-1 {
+    background-color: #a04799 !important;
+}
+
+body {
+    background-color: #0e1626;
+}
+
+* {
+    font-family: 'Roboto', cursive;
+}
+
 #Infect-button {
-    background-color: rgba(93,56,123,0.9);
+    background-color: rgba(93, 56, 123, 0.9);
     position: absolute;
     bottom: 50px;
     line-height: 100px;
@@ -23,7 +36,7 @@
 .virusIcon {
     width: 36px;
     height: 36px;
-    display:inline-block;
+    display: inline-block;
     border-radius: 50%;
     margin: 8px;
     background-size: contain;
@@ -34,237 +47,212 @@
     background-color: #a04799;
 }
 
-.btn-floating{
-  text-align: center;
-
+.btn-floating {
+    text-align: center;
 }
-
 
 .btn-floating.btn-large {
-  width: 100px !important;
-  height: 100px !important;
+    width: 100px !important;
+    height: 100px !important;
 }
 
-
-.sidenav-name{
+.sidenav-name {
     font-size: 20px !important;
 }
 
 .levelup {
-  position: relative;
-  height: 15px;
-  display: block;
-  width: 90%;
-  background-color: lightgrey;
-  border-radius: 3px;
-  margin: 1.5rem 0 1rem 0;
-  overflow: hidden;
+    position: relative;
+    height: 15px;
+    display: block;
+    width: 90%;
+    background-color: lightgrey;
+    border-radius: 3px;
+    margin: 1.5rem 0 1rem 0;
+    overflow: hidden;
 }
 
 .levelup .determinate {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: grey;
-  transition: width .3s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: grey;
+    transition: width .3s linear;
 }
 
 nav .button-collapse i {
-  height: 56px;
-  line-height: 56px;
+    height: 56px;
+    line-height: 56px;
 }
 
- nav a.button-collapse {
+nav a.button-collapse {
     display: block !important;
-  }
+}
 
 .side-nav .userView .circle {
-  height: 100px !important;
-  width: 100px !important;
+    height: 100px !important;
+    width: 100px !important;
 }
 
-.collapsible-header{
+.collapsible-header {
     line-height: 56px !important;
     font-weight: bold !important;
 }
 
-.profile{
+.profile {
     height: 130px !important;
     background-color: slategrey;
 }
 
-.profile-picture{
+.profile-picture {
     position: relative;
     margin: 16px 16px 16px 25px;
     height: 100 px;
     width: 100px;
 }
 
-.profile-name{
-  position: absolute;
-  text-align: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 110px;
-}
-
-.profile-account{
- line-height: 160px;
-}
-
-.achievement-tag{
-  width: 80%;
-  margin-left: 10%;
-  border-width: 3px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: darkgrey;
-  background: white;
-
-}
-
-.achievement-text{
-  font-weight:  !important;
-  font-family: Roboto;
-  font-size: 20px;
-}
-
-.achievement-box{
-  margin-top: 20px;
-  margin-left: 5%;
-  width: 90%;
-  height:30vw;
-  background: #dae2ef;
-}
-
-@media screen and (max-width: 320px) and (min-width: 0px){
-.achievement-box .achievement-text{
+.profile-name {
+    position: absolute;
     text-align: center;
-    color: dimgray;
-    font-weight: 500;
-    font-size: 8px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 110px;
 }
 
-.achievement-box .achievement-number{
-    margin-top: -25px;
-    text-align: center;
-    color: dimgray;
-    font-weight: 500;
-    font-size: 40px;
-}
+.profile-account {
+    line-height: 160px;
 }
 
-@media screen and (max-width: 699px) and (min-width: 321px){
-.achievement-box .achievement-text{
-    text-align: center;
-    color: dimgray;
-    font-weight: 500;
-    font-size: 10px;
+.achievement-tag {
+    width: 80%;
+    margin-left: 10%;
+    border-width: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: darkgrey;
+    background: white;
 }
 
-.achievement-box .achievement-number{
-    margin-top: -10px;
-    text-align: center;
-    color: dimgray;
-    font-weight: 500;
-    font-size: 50px;
-}
+.achievement-text {
+    font-weight: !important;
+    font-family: Roboto;
+    font-size: 20px;
 }
 
-@media screen and (max-width: 1300px) and (min-width: 700px){
-.achievement-box .achievement-text{
-    text-align: center;
-    color: dimgray;
-    font-weight: 500;
+.achievement-box {
+    margin-top: 20px;
+    margin-left: 5%;
+    padding: 20px;
+    width: 90%;
+    min-height: 300px;
+    background: #dae2ef;
 }
 
-.achievement-box .achievement-number{
-    margin-top: 5px;
-    text-align: center;
-    color: dimgray;
-    font-weight: 500;
-    font-size: 80px;
+@media screen and (max-width: 320px) and (min-width: 0px) {
+    .achievement-box .achievement-text {
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+        font-size: 8px;
+    }
+    .achievement-box .achievement-number {
+        margin-top: -25px;
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+        font-size: 40px;
+    }
 }
+
+@media screen and (max-width: 699px) and (min-width: 321px) {
+    .achievement-box .achievement-text {
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+        font-size: 10px;
+    }
+    .achievement-box .achievement-number {
+        margin-top: -10px;
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 700px) {
+    .achievement-box .achievement-text {
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+    }
+    .achievement-box .achievement-number {
+        margin-top: 5px;
+        text-align: center;
+        color: dimgray;
+        font-weight: 500;
+        font-size: 80px;
+    }
 }
 
 .achievement-progress {
-  margin-top:20px;
-  margin-left:10%;
-  position: relative;
-  height: 30px;
-  display: block;
-  width: 80%;
-  background-color: #dae2ef;
-  border-radius: 2px;
-  overflow: hidden;
+    margin-top: 20px;
+    margin-left: 10%;
+    position: relative;
+    height: 30px;
+    display: block;
+    width: 80%;
+    background-color: #dae2ef;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
 .achievement-progress .determinate {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: #FFDC01;
-  transition: width .3s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #FFDC01;
+    transition: width .3s linear;
 }
 
 .points {
-  background-color: rgba(26,36,79,0.8) !important;
+    background-color: rgba(26, 36, 79, 0.8) !important;
 }
 
 .viruses {
-    background-color: rgba(93,56,123,0.9) !important;
+    background-color: rgba(93, 56, 123, 0.9) !important;
 }
 
-.userView{
-    background-color: rgba(142,44,137,0.8);
+.userView {
+    background-color: rgba(142, 44, 137, 0.8);
 }
 
-.modal-fixed-center{
-  transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  top: 50%;
-  left: 50%;
+.modal-fixed-center {
+    transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
 }
 
-.leaderboard_header{
-  color: black;
-  width: 100%;
-  height: 40px;
-  font-size: 30px;
-  line-height: 44px;
-  text-align: center;
-  background-color:  #d1c4e9;
-
-  margin-top: -33px;
-  margin-bottom: -24px;
-
-  box-shadow:  1px 1px 1px;
+.circle {
+    line-height: 55px;
+    text-align: center;
+    font-size: 30px;
 }
 
-.leader_text{
-margin-left: 37px;
-font-size: 20px;
-}
-.circle{
-
-  line-height: 55px;
-  text-align: center;
-  font-size: 30px;
- 
+.row {
+    width: 100%;
+    text-align: center;
 }
 
-.row{
-  width: 100%;
-  text-align: center;
+.waves-light {
+    display: inline-block;
+    background-color: #a04799 !important;
 }
 
-.waves-light{
-display: inline-block;
-background-color: purple;
-
-
+input {
+    padding-left: 10px !important;
 }

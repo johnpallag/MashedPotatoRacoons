@@ -1,3 +1,5 @@
+<!doctype html>
+
 <html>
 
 <head>
@@ -25,11 +27,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script src="../js/api.js"></script>
-    <script src="../js/leaderboard.js"></script>
+    <script src="../js/profile.js"></script>
     <link href="../css/style.css" rel="stylesheet" />
-
     <link rel="icon" href="../images/0.png" />
-    <script src="../js/style.js"></script>
 </head>
 
 <body>
@@ -42,7 +42,7 @@
 
             <ul id="slide-out" class="side-nav">
                 <li>
-                    <div class="userView" id="profileLink" style="cursor:pointer;" onclick="location.href='../profile'">
+                    <div class="userView" id="profileLink" style="cursor:pointer;">
                         <img class="circle" src="../images/profile.png">
                         <span class="white-text" id="accountName">Alok Mysore</span>
                         <div class="levelup">
@@ -60,13 +60,51 @@
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-    <!--Navbar & Sidebar-->
-    <div class="container">
-        <h2 style="color:white;">Leaderboards</h2>
 
-        <ul class="collection" id="leaderboard">
-        </ul>
-    </div>
+    <!--Navbar & Sidebar-->
+    <nav>
+        <div class="nav-wrapper profile row">
+            <div class="col s5">
+                <img class="circle profile-picture" src="../images/profile.png">
+            </div>
+            <span class="white-text profile-name" id="profileName">Alok Mysore</span>
+            <span class="white-text profile-account" id="profileUsername">@iamawesomealok</span>
+        </div>
+        <div class="achievement-tag">
+            <div class="achievement-text black-text">Achievement</div>
+        </div>
+
+        <div class="achievement-progress">
+            <div class="determinate" id="profileLevelBar"></div>
+        </div>
+
+        <div class="row" style="font-size:50px;color:black;">
+            <div class="col s6">
+                <div class="achievement-box">
+                    <h4 style="margin-top:10px;">Number of virus</h4>
+                    <div class="achievement-number" id="stats-virusCount">0</div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="achievement-box">
+                    <h4 style="margin-top:10px;">Number of people infected</h4>
+                    <div class="achievement-number" id="stats-infectCount">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s6">
+                <div class="achievement-box"></div>
+            </div>
+            <div class="col s6">
+                <div class="achievement-box"></div>
+            </div>
+        </div>
+    </nav>
+
+
+
 </body>
 
 </html>

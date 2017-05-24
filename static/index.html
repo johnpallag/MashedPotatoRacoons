@@ -9,7 +9,6 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Epidemic Go</title>
 	<script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
-	<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 	<!--Import Google Icon Font-->
 	<link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,13 +28,8 @@
 	<script src="js/style.js"></script>
 	<script src="js/api.js"></script>
 	<script src="js/index.js"></script>
-	<style>
-		.blue.lighten-1 {
-			background-color: #a04799 !important;
-		}
-	</style>
-		<!-- Custom CSS -->
-		<link href="css/custom.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,40 +41,44 @@
 
 			<ul id="slide-out" class="side-nav">
 				<li>
-					<div class="userView">
-						<a href="#!user"><img class="circle" src="images/profile.png"></a>
-						<a href="#!name"><span class="white-text">Alok Mysore</span></a>
+					<div class="userView" id="profileLink" style="cursor:pointer;display:none;" onclick="location.href='profile'">
+						<img class="circle" src="images/profile.png">
+						<span class="white-text" id="accountName">Alok Mysore</span>
 						<div class="levelup">
-							<div class="determinate" style="width: 70%"></div>
+							<div class="determinate" style="width: 70%" id="accountPointsBar"></div>
 						</div>
-						<a href="#!email"><span class="white-text">level 6</span></a>
+						<span class="white-text" id="accountLevel">level 6</span>
 					</div>
 				</li>
 
-				<li><a href="landingPage.html"><i class="material-icons">dashboard</i>Home</a></li>
-				<li><a href="index.html"><i class="material-icons">play_arrow</i>Play Now</a></li>
+				<li><a href="index.html"><i class="material-icons">dashboard</i>Home</a></li>
 				<li><a href="leaderboard"><i class="material-icons">star</i>Leaderboard</a></li>
+				<li><a href="howtoplay"><i class="material-icons">play_arrow</i>How to Play</a></li>
 			</ul>
 
 			<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
-
 		</div>
 	</nav>
 
 	<div id="loginmodel" class="modal modal-fixed-center" style="display:block;">
 		<div class="model-content">
 			<div class="row">
+				<div class="col s12" style="margin-top: 20px;">
+					<h4>Welcome to Epidemic Go!</h4>
+					<p>Please sign in or sign up to start playing</p>
+				</div>
+			</div>
+			<div class="row">
 				<form class="col s12" style="margin-top: 20px;">
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="username" type="text">
+							<input id="username" type="text" autocomplete="off">
 							<label for="username" data-error="wrong" data-success="right">Username</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="password" type="password">
+							<input id="password" type="password" autocomplete="off">
 							<label for="password">Password</label>
 						</div>
 					</div>
@@ -90,7 +88,7 @@
 					  </button>
 					</div>
 					<div class="row">
-						<p style = "text-align: center">Don't have an account?</p>
+						<p style="text-align: center">Don't have an account?</p>
 						<button class="btn waves-effect waves-light" name="Sign Up" id="signup">Sign Up
 					    <i class="material-icons right">send</i>
 					  </button>
@@ -103,7 +101,7 @@
 	<div id="map"></div>
 	<a class="btn-floating btn-large waves-effect waves-light" id="Infect-button" style="display:none">Infect!</a>
 	<div id="viruses"></div>
-	<div id="points"></div>
+	<div id="points" style="display:none;"></div>
 
 	<script>
 		$('.modal').modal();

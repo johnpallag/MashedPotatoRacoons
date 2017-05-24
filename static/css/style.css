@@ -1,15 +1,19 @@
 #map {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }
 
 #points {
-  color: white;
-  font-size: 50px;
-  position: absolute;
+    color: white;
+    font-size: 50px;
+    position: absolute;
     left: 25px;
+}
+
+.blue.lighten-1 {
+    background-color: #a04799 !important;
 }

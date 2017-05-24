@@ -37,14 +37,14 @@ function getPosition(callback) {
 
 function initMap() {
   var uluru = {
-    lat: 32,
-    lng: -117
+    lat: 32.8783097,
+    lng: -117.2409619
   };
   googleIsLoaded = true;
 
   heatmapData = new google.maps.MVCArray([]);
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 22,
+    zoom: 16,
     center: uluru,
     styles: mapStyle
   });
@@ -58,11 +58,17 @@ function initMap() {
 
 function onLoggedIn(){
   $("#loginmodel").hide();
+  $("#points").show();
+  $("#profileLink").show();
   $("#Infect-button").show();
   var player = EG.API.Account.currentPlayer;
   player.virus = player.virus || {};
   player.virus.params = player.virus.params || {};
   player.virus.color = player.virus.color || EG.API.Util.randColor();
+  $("#accountName").text(player.name || "Your Name");
+  var level = EG.API.Account.calcLevel();
+  $("#accountLevel").text("level " + level);
+  $("#accountPointsBar").css("width", EG.API.Account.levelCompletion() + "%");
   var gradient = ['rgba(255, 255, 255, 0)',
     EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
     EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
@@ -70,6 +76,7 @@ function onLoggedIn(){
     EG.API.Util.hexToRGB(player.virus.params.color, 1)
   ];
   heatmap.set('gradient', gradient);
+  map.setZoom(22);
   if (center) {
     map.setCenter(center);
   }
@@ -104,7 +111,7 @@ $(document).ready(function() {
   $("#Infect-button").on('click', EG.API.Game.infect);
   $(".button-collapse").sideNav();
   $("#signin").on('click',function(e){
-    EG.API.Account.signin($("#email").val(), $("#password").val(), onLoggedIn, alert);
+    EG.API.Account.signin($("#username").val(), $("#password").val(), onLoggedIn, alert);
     e.preventDefault();
   });
   $("#signup").on('click',function(e){

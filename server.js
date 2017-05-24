@@ -24,6 +24,8 @@ io.on('connection', function(socket){
       socket.emit('requestError', "Missing username");
     } else if(!data.password){
       socket.emit('requestError', "Missing password");
+    } else if(!data.name){
+      socket.emit('requestError', "Missing name");
     } else if(!data.virus){
       socket.emit('requestError', "Missing virus details");
     } else {
@@ -35,7 +37,7 @@ io.on('connection', function(socket){
       } else {
         const id = "ep" + Math.floor(Math.random() * 100000);
         var newVirus = new Virus(id, data.virus);
-        var newPlayer = new Player(id, newVirus);
+        var newPlayer = new Player(id, data.name, data.username, newVirus);
         logins[id] = {
           id: id,
           username: data.username,
@@ -93,6 +95,7 @@ io.on('connection', function(socket){
         if(player.infect(virus)){
           players[virus.id].score = players[virus.id].score || 0;
           players[virus.id].score += 100;
+          players[virus.id].stats.infectedCount++;
         }
       }
     }
