@@ -15,7 +15,8 @@ EG.API = {
     _Callbacks: {
         _onerror: null,
         _onsuccess: null,
-        _ondata: null
+        _ondata: null,
+        _oninfectresult: null
     },
     Account: {
         signin: function(username, password, onSuccess, onError) {
@@ -66,10 +67,13 @@ EG.API = {
           }
         },
         levelCompletion: function(){
+          if(!EG.API.Account.currentPlayer){
+            return 0;
+          }
           var nextLevel = EG.API.Account.calcLevel();
           var nextLevelPoints = Math.ceil(nextLevel / 2) * (nextLevel + 1) * 100;
           var currentLevelPoints = Math.ceil((nextLevel-1) / 2) * nextLevel * 100;
-          return (nextLevelPoints - EG.API.Account.currentPlayer.score)/(nextLevelPoints - currentLevelPoints);
+          return 100 - ((nextLevelPoints - EG.API.Account.currentPlayer.score)/(nextLevelPoints - currentLevelPoints)) * 100;
         },
         currentPlayer: null
     },
@@ -172,6 +176,10 @@ socket.on("data", function(evt) {
         EG.API.Account.currentPlayer = EG.API.Game.players[EG.API.Account.currentPlayer.id];
     }
     if (EG.API._Callbacks._ondata) EG.API._Callbacks._ondata(EG.API.Game.players);
+});
+
+socket.on("infect-result", function(evt) {
+    if (EG.API._Callbacks._oninfectresult) EG.API._Callbacks._oninfectresult(JSON.parse(evt));
 });
 
 socket.on("success", function(evt) {

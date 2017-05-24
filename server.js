@@ -88,6 +88,10 @@ io.on('connection', function(socket){
     if(!id || !players[id]) {
       return;
     }
+    var infectedObj = {
+      score: 0,
+      infectedCount: 0
+    };
     const currentPlayer = players[id];
     function tryInfect(virus, player){
       const distance = currentPlayer.distance(player);
@@ -95,7 +99,15 @@ io.on('connection', function(socket){
         if(player.infect(virus)){
           players[virus.id].score = players[virus.id].score || 0;
           players[virus.id].score += 100;
-          players[virus.id].stats.infectedCount++;
+          players[virus.id].stats.infectedCount += 1;
+          if(virus.id === id){
+            infectedObj.score += 100;
+            infectedObj.infectedCount += 1;
+            if(infectedObj.infectedCount > 1){
+              players[virus.id].score += infectedObj.infectedCount * 10;
+              infectedObj.score += infectedObj.infectedCount * 10;
+            }
+          }
         }
       }
     }
@@ -108,6 +120,7 @@ io.on('connection', function(socket){
       }
     });
     io.emit('data', JSON.stringify(players));
+    socket.emit('infect-result', JSON.stringify(infectedObj));
   });
   io.emit('data', JSON.stringify(players));
 });
