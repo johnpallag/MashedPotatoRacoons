@@ -11,10 +11,13 @@ function changeImage(imagelink, distance, infection) {
     document.getElementById('yourvirus').src = "./img/virus_" + imagelink + ".png";
     document.getElementById('yourdistance').innerHTML = "Distanced: " + distance + " ft";
     document.getElementById('yourinfection').innerHTML = "Time: " + infection + " day";
+    document.getElementById('yourinfection').innerHTML = "Time: " + infection + " day";
+    document.getElementById('yourname').innerHTML = "Your Virus: " + document.getElementById(imagelink).innerHTML;
 
     document.getElementById('chosenvirus').src = "./img/virus_" + imagelink + ".png";
     document.getElementById('chosendistance').innerHTML = "Distanced: " + distance + " ft";
     document.getElementById('choseninfection').innerHTML = "Time: " + infection + " day";
+    document.getElementById('chosenname').innerHTML = "Your Chosen Virus: " + document.getElementById(imagelink).innerHTML;
 }
 
 $(document).ready(function() {
