@@ -3,224 +3,237 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Epidemic Go</title>
-    <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Epidemic Go</title>
+  <script src="//cdn.socket.io/socket.io-1.2.0.js"></script>
 
-    <!--Import Google Icon Font-->
-    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <link href="../css/style.css" rel="stylesheet" />
-    <link rel="icon" href="images/0.png" />
-    <script src="../js/style.js"></script>
-    <script src="../js/api.js"></script>
-    <script src="../js/choose_virus.js"></script>
-    <!-- Custom CSS -->
-    <link href="../css/custom.css" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <link href="../css/style.css" rel="stylesheet" />
+  <link rel="icon" href="images/0.png" />
+  <script src="../js/style.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/choose_virus.js"></script>
+  <!-- Custom CSS -->
+  <link href="../css/custom.css" rel="stylesheet">
 
-    <!--Body of page-->
-    <style>
-        .carousel .carousel-item {
-            height: 350px !important;
-            width: 110px !important;
-            cursor: pointer;
-        }
+  <!--Body of page-->
+  <style>
+    .carousel .carousel-item {
+      height: 350px !important;
+      width: 110px !important;
+      cursor: pointer;
+    }
 
-        .carousel .carousel-item:hover {
-            opacity: 0.8;
-        }
+    .carousel .carousel-item:hover {
+      opacity: 0.8;
+    }
 
-        .modal-fixed-center {
-            transform: translateX(-50%) translateY(-50%);
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            -o-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            top: 50%;
-            left: 50%;
-        }
+    .modal-fixed-center {
+      transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      -o-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      top: 50%;
+      left: 50%;
+    }
 
-        .modal-body{
-            color: #0e1626 !important;
-        }
-    </style>
+    .modal-body {
+      color: #0e1626 !important;
+    }
+  </style>
 </head>
 
 <body>
 
-    <!--Navbar & Sidebar-->
-    <nav>
-        <div class="nav-wrapper blue lighten-1">
-            <a href="../" class="brand-logo center">Epidemic Go</a>
+  <!--Navbar & Sidebar-->
+  <nav>
+    <div class="nav-wrapper blue lighten-1">
+      <a href="../" class="brand-logo center">Epidemic Go</a>
 
-            <ul id="slide-out" class="side-nav">
-                <li>
-                    <div class="userView" id="profileLink" style="cursor:pointer;display:none;" onclick="location.href='../profile'">
-                        <img class="circle" src="../images/profile.png">
-                        <span class="white-text">Alok Mysore</span>
-                        <div class="levelup">
-                            <div class="determinate" style="width: 70%"></div>
-                        </div>
-                        <span class="white-text">level 6</span>
-                    </div>
-                </li>
-
-                <li><a href="../index.html"><i class="material-icons">dashboard</i>Home</a></li>
-                <li><a href="../leaderboard"><i class="material-icons">star</i>Leaderboard</a></li>
-        				<li><a href="../howtoplay"><i class="material-icons">play_arrow</i>How to Play</a></li>
-            </ul>
-
-            <a href="#" data-activates="slide-out" class="button-collapse" onclick=""><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-
-    <!-- Viruses -->
-    <div class="container" style="color:white;" id="virusCreator">
-        <div class="intro-text">
-            <h5><center>Choose Your Virus</center></h5>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col s12">
-                <center>
-                    <div style="display:inline-block;">
-                        <center id="yourname">Your Virus: Cougher</center>
-                        <center>
-                        <img class="responsive-img" id="yourvirus" src="./img/virus_12.png">
-                        </center>
-                        <div style="float:left;">
-                            <p id="yourdistance"> Distanced: 10 ft</p>
-                            <p id="yourinfection"> Time: 1 day</p>
-                            <a class="responsive-btn" href="#play">
-                                <center>
-                                    <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' id="choose">Choose Virus</button>
-                                </center>
-                            </a>
-                        </div>
-                    </div>
-                </center>
+      <ul id="slide-out" class="side-nav">
+        <li>
+          <div class="userView" id="profileLink" style="cursor:pointer;display:none;" onclick="location.href='../profile'">
+            <img class="circle" src="../images/profile.png">
+            <span class="white-text">Alok Mysore</span>
+            <div class="levelup">
+              <div class="determinate" style="width: 70%"></div>
             </div>
-        </div>
-        <form id="myForm">
-            <div class="carousel">
-                <a class="carousel-item" data-image="12" data-distance="10" data-threshold="24">
-                    <div class="row" id="12">Cougher</div>
-                    <div class="row">
-                        <img src="./img/virus_1.png">
-                    </div>
-                </a>
-                <a class="carousel-item" data-image="22" data-distance="30" data-threshold="8">
-                    <div class="row" id="22">Sneezer</div>
-                    <div class="row">
-                        <img src="./img/virus_2.png">
-                    </div>
-                </a>
-                <a class="carousel-item" data-image="32" data-distance="100" data-threshold="1.5">
-                    <div class="row" id="32">Puker</div>
-                    <div class="row">
-                        <img src="./img/virus_3.png">
-                    </div>
-                </a>
-                <a class="carousel-item" data-image="42" data-distance="75" data-threshold="2">
-                    <div class="row" id="42">Coffee</div>
-                    <div class="row">
-                        <img src="./img/virus_4.png">
-                    </div>
-                </a>
-                <a class="carousel-item" data-image="52" data-distance="80" data-threshold="3">
-                    <div class="row" id="52">Peeker</div>
-                    <div class="row">
-                        <img src="./img/virus_5.png">
-                    </div>
-                </a>
-                <a class="carousel-item" data-image="62" data-distance="55" data-threshold="2.5">
-                    <div class="row" id="62">Craze</div>
-                    <div class="row">
-                        <img src="./img/virus_6.png">
-                    </div>
-                </a>
-                <!--<a class="carousel-item" onClick="changeImage(72, 33, 6)">
+            <span class="white-text">level 6</span>
+          </div>
+        </li>
+
+        <li><a href="../index.html"><i class="material-icons">dashboard</i>Home</a></li>
+        <li><a href="../leaderboard"><i class="material-icons">star</i>Leaderboard</a></li>
+        <li><a href="../howtoplay"><i class="material-icons">play_arrow</i>How to Play</a></li>
+      </ul>
+
+      <a href="#" data-activates="slide-out" class="button-collapse" onclick=""><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!-- Viruses -->
+  <div class="container" style="color:white;" id="virusCreator">
+    <div class="intro-text">
+      <h5><center>Choose Your Virus</center></h5>
+    </div>
+    </br>
+    <div class="row">
+      <div class="col s12">
+        <center>
+          <div style="display:inline-block;">
+            <center id="yourname">Your Virus: Cougher</center>
+            <center>
+              <img class="responsive-img" id="yourvirus" src="./img/virus_12.png">
+            </center>
+            <div style="float:left;">
+              <p id="yourdistance"> Distanced: 10 ft</p>
+              <p id="yourinfection"> Time: 1 day</p>
+              <a class="responsive-btn" href="#play">
+                <center>
+                  <button class="waves-effect waves-light btn purple lighten-1 white-text" type='button' id="choose">Choose Virus</button>
+                </center>
+              </a>
+            </div>
+          </div>
+        </center>
+      </div>
+    </div>
+    <form id="myForm">
+      <div class="carousel">
+        <a class="carousel-item">
+          <div class="virus-option" data-image="12" data-distance="10" data-threshold="24">
+            <div class="row" id="12">Cougher</div>
+            <div class="row">
+              <img src="./img/virus_1.png">
+            </div>
+          </div>
+        </a>
+        <a class="carousel-item">
+          <div class="virus-option" data-image="22" data-distance="30" data-threshold="8">
+            <div class="row" id="22">Sneezer</div>
+            <div class="row">
+              <img src="./img/virus_2.png">
+            </div>
+          </div>
+        </a>
+        <a class="carousel-item">
+          <div class="virus-option" data-image="32" data-distance="100" data-threshold="1.5">
+            <div class="row" id="32">Puker</div>
+            <div class="row">
+              <img src="./img/virus_3.png">
+            </div>
+          </div>
+        </a>
+        <a class="carousel-item">
+          <div class="virus-option" data-image="42" data-distance="75" data-threshold="2">
+            <div class="row" id="42">Coffee</div>
+            <div class="row">
+              <img src="./img/virus_4.png">
+            </div>
+          </div>
+        </a>
+        <a class="carousel-item">
+          <div class="virus-option" data-image="52" data-distance="80" data-threshold="3">
+            <div class="row" id="52">Peeker</div>
+            <div class="row">
+              <img src="./img/virus_5.png">
+            </div>
+          </div>
+        </a>
+        <a class="carousel-item">
+          <div class="virus-option" data-image="62" data-distance="55" data-threshold="2.5">
+            <div class="row" id="62">Craze</div>
+            <div class="row">
+              <img src="./img/virus_6.png">
+            </div>
+          </div>
+        </a>
+        <!--<a class="carousel-item" onClick="changeImage(72, 33, 6)">
                     <div class="row" id="72">Wonky</div>
                     <div class="row">
                         <img src="./img/virus_7.png">
                     </div>
                 </a>-->
-            </div>
-        </form>
+        </div>
+    </form>
     </div>
 
     <div id="loginmodel" class="modal modal-fixed-center" style="z-index:100">
-        <div class="model-content">
+      <div class="model-content">
+        <div class="row">
+          <div class="col s12" style="margin-top: 20px;">
+            <p>Please provide your name, a username, and password.<br>Afterwards, you will create your virus</p>
+          </div>
+        </div>
+        <div class="row">
+          <form class="col s12" style="margin-top: 20px;">
             <div class="row">
-                <div class="col s12" style="margin-top: 20px;">
-                    <p>Please provide your name, a username, and password.<br>Afterwards, you will create your virus</p>
-                </div>
+              <div class="input-field col s12">
+                <input id="name" type="text">
+                <label for="name" data-error="wrong" data-success="right">Name</label>
+              </div>
             </div>
             <div class="row">
-                <form class="col s12" style="margin-top: 20px;">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="name" type="text">
-                            <label for="name" data-error="wrong" data-success="right">Name</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="username" type="text">
-                            <label for="username" data-error="wrong" data-success="right">Username</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password">
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" name="Sign In" id="signup">Sign Up
+              <div class="input-field col s12">
+                <input id="username" type="text">
+                <label for="username" data-error="wrong" data-success="right">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <button class="btn waves-effect waves-light" name="Sign In" id="signup">Sign Up
   					    <i class="material-icons right">send</i>
   					 </button>
-                    </div>
-                </form>
             </div>
+          </form>
         </div>
+      </div>
     </div>
 
     <!-- Modal to Play -->
     <div id="play" class="modal">
-        <div class="modal-content">
-            <center><h5 id="chosenname">Your Chosen Virus: Cougher</h5></center>
-            </br>
-            <div class="col s12">
-                <center>
-                    <div style="display:inline-block">
-                        <center>
-                        <img class="responsive-img" id="chosenvirus" src="./img/virus_12.png">
-                        </center>
-                        <div style="float:left;">
-                            <p id="chosendistance"> Distanced: 10 ft</p>
-                            <p id="choseninfection"> Time: 1 day</p>
-                        </div>
-                    </div>
-                </center>
+      <div class="modal-content">
+        <center>
+          <h5 id="chosenname">Your Chosen Virus: Cougher</h5></center>
+        </br>
+        <div class="col s12">
+          <center>
+            <div style="display:inline-block">
+              <center>
+                <img class="responsive-img" id="chosenvirus" src="./img/virus_12.png">
+              </center>
+              <div style="float:left;">
+                <p id="chosendistance"> Distanced: 10 ft</p>
+                <p id="choseninfection"> Time: 1 day</p>
+              </div>
             </div>
+          </center>
         </div>
-        <div class="modal-footer">
-            <a class="left waves-effect waves-light btn purple lighten-1 white-text" type='button' href="./index.html" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <div type='button' class="right waves-effect waves-light btn purple lighten-1 white-text" id="continueToGame">Continue</div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="left waves-effect waves-light btn purple lighten-1 white-text" type='button' href="./index.html" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <div type='button' class="right waves-effect waves-light btn purple lighten-1 white-text" id="continueToGame">Continue</div>
+      </div>
     </div>
 </body>
 

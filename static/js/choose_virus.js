@@ -27,16 +27,32 @@ $(document).ready(function() {
     $("#username").val("");
     $("#password").val("");
   }, 100);
-  $(".carousel-item").on("click", function() {
-    changeImage($(this).attr("data-image"),
-      $(this).attr("data-distance"),
-      $(this).attr("data-threshold"));
-  });
   $('.carousel').carousel({
     dist: 0,
     shift: 0,
-    padding: 0,
+    padding: 0
   });
+
+  $('.carousel').bind('DOMSubtreeModified', function(e) {
+    console.log(e);
+  });
+
+  var options = document.getElementsByClassName("carousel-item");
+  for (var i = 0; i < options.length; i++) {
+    var element = options[0];
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutationRecord) {
+        changeImage($(".carousel-item.active .virus-option").attr("data-image"),
+          $(".carousel-item.active .virus-option").attr("data-distance"),
+          $(".carousel-item.active .virus-option").attr("data-threshold"));
+      });
+    });
+
+    observer.observe(element, {
+      attributes: true,
+      attributeFilter: ['style']
+    });
+  }
 
   $('.modal').modal();
 
