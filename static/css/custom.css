@@ -1,4 +1,4 @@
-@import url('../fonts/glue.ttf');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 .blue.lighten-1 {
     background-color: #a04799 !important;
 }
@@ -8,7 +8,7 @@ body {
 }
 
 * {
-    font-family: 'glue', cursive;
+    font-family: 'glue', Arial;
 }
 
 #Infect-button {
