@@ -16,6 +16,8 @@ EG.API = {
         _onerror: null,
         _onsuccess: null,
         _ondata: null,
+        _onpowerups: null,
+        _onpowerup: null,
         _oninfectresult: null
     },
     Account: {
@@ -160,12 +162,13 @@ EG.API = {
                             onError("An unknown error occurred.");
                             break;
                     }
-                });
+                }, {maximumAge:600000, timeout:5000, enableHighAccuracy: true});
             } else {
                 onError("Geolocation is not supported by this device")
             }
         },
         players: {},
+        powerups: [],
         currentLocation: {}
     }
 };
@@ -176,6 +179,15 @@ socket.on("data", function(evt) {
         EG.API.Account.currentPlayer = EG.API.Game.players[EG.API.Account.currentPlayer.id];
     }
     if (EG.API._Callbacks._ondata) EG.API._Callbacks._ondata(EG.API.Game.players);
+});
+
+socket.on("powerups", function(evt) {
+    EG.API.Game.powerups = JSON.parse(evt);
+    if (EG.API._Callbacks._onpowerups) EG.API._Callbacks._onpowerups(EG.API.Game.powerups);
+});
+
+socket.on("powerup", function(){
+  if (EG.API._Callbacks._onpowerup) EG.API._Callbacks._onpowerup();
 });
 
 socket.on("infect-result", function(evt) {

@@ -5,6 +5,7 @@ $(document).ready(function() {
     EG.API.Account.authenticate(onAuthentication);
 
     function onAuthentication() {
+      $("#profileLink").show();
         var player = EG.API.Account.currentPlayer;
         player.virus = player.virus || {};
         player.virus.params = player.virus.params || {};

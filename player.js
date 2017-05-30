@@ -8,13 +8,20 @@ const Player = function(id, name, username, virus){
   this.viruses = [];
   this.location = {};
   this.history = [];
+  this.historyCount = 0;
   this.stats = {
-    infectedCount: 0
+    infectedCount: 0,
+    powerupCount: 0,
+    distanceTraveled: 0
   };
 };
 
 Player.prototype.updateLocation = function(loc){
-  this.history.push(this.location);
+  this.history[this.historyCount] = this.location;
+  this.historyCount = (this.historyCount + 1) % 100;
+  if(this.location.lat && this.location.lng) {
+    this.stats.distanceTraveled += this.distance({location:loc});
+  }
   this.location = loc;
 };
 
@@ -40,8 +47,19 @@ Player.prototype.distance = function(player){
   return getDistanceFromLatLonInKm(this.location.lat, this.location.lng, player.location.lat, player.location.lng) * 1000;
 };
 
+Player.prototype.removeVirus = function(virus){
+  var self = this;
+  for(var i=0;i<self.viruses.length;i++){
+    if(self.viruses[i].id === virus.id) {
+      self.viruses.splice(i, 1);
+      return;
+    }
+  }
+}
+
 Player.prototype.infect = function(virus){
   var done = false;
+  var self = this;
   this.viruses.forEach(function(v){
     if(v.id === virus.id) {
       done = true;
@@ -49,6 +67,9 @@ Player.prototype.infect = function(virus){
   });
   if(!done){
     this.viruses.push(virus);
+    setTimeout(function(){
+      self.removeVirus(virus);
+    }, virus.params.lifetime * 1000 * 60);
     return true;
   }
   return false;

@@ -56,7 +56,7 @@ $(document).ready(function() {
         var virus = {
           color: '#' + Math.floor(Math.random() * 16777215).toString(16),
           image: img,
-          theshold: d,
+          threshold: d,
           lifetime: t
         };
         EG.API.Account.signup($("#username").val(), $("#password").val(), $("#name").val(), virus, function() {

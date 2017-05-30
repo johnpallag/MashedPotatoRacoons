@@ -16,6 +16,15 @@ const io = socketIO(server);
 
 var players = {};
 var logins = {};
+var powerups = [];
+var powerupCount = 0;
+
+function randomLocation(loc){
+  return {
+    lat: loc.lat + Math.random() * 0.002 -0.001,
+    lng: loc.lng + Math.random() * 0.002 -0.001
+  };
+}
 
 io.on('connection', function(socket){
   socket.on('signup', function(json){
@@ -80,7 +89,23 @@ io.on('connection', function(socket){
       return;
     }
     players[id].updateLocation(loc);
+    if(Math.random() > 0.5){
+      powerups[powerupCount % (Object.keys(players).length * 20)] = randomLocation(loc);
+      powerupCount++;
+    }
+    for(var i=0;i<powerups.length;i++){
+      var powerup = powerups[i];
+      var distance = players[id].distance({location:powerup});
+      if(distance <= players[id].virus.threshold){
+        players[id].virus.powerup();
+        players[id].stats.powerupCount++;
+        powerups.splice(i, 1);
+        socket.emit("powerup", JSON.stringify({}));
+        break;
+      }
+    }
     io.emit('data', JSON.stringify(players));
+    io.emit('powerups', JSON.stringify(powerups));
   });
   socket.on('infect', function(json){
     const data = JSON.parse(json);
