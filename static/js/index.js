@@ -8,6 +8,7 @@ if (location.href.indexOf("index.html") > -1) {
     location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
 }
 
+var infowindow = null;
 var map;
 var center = null;
 var googleIsLoaded = false;
@@ -54,6 +55,9 @@ function initMap() {
     };
     googleIsLoaded = true;
 
+    infowindow = new google.maps.InfoWindow({
+        content: ""
+    });
     heatmapData = new google.maps.MVCArray([]);
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
@@ -105,18 +109,6 @@ function onLoggedIn() {
     updateScreen();
 }
 
-function resetMarkers() {
-    Object.keys(markers).forEach(function(id) {
-        markers[id].setMap(null);
-    });
-}
-
-function resetCircles() {
-    Object.keys(markers).forEach(function(id) {
-        circles[id].setMap(null);
-    });
-}
-
 $(document).ready(function() {
     $("#Infect-button").on('click', EG.API.Game.infect);
     $(".button-collapse").sideNav();
@@ -145,33 +137,45 @@ $(document).ready(function() {
         });
     };
     EG.API._Callbacks._ondata = function(players) {
-        resetMarkers();
-        resetCircles();
         updateScreen();
         Object.keys(players).forEach(function(id) {
             if (googleIsLoaded) {
-                markers[id] = markers[id] || new google.maps.Marker({
-                    icon: {
-                        url: location.href + 'images/virus_' + (players[id].virus.params.image || 1) + '.png',
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(50, 50),
-                        labelContent: players[id].username,
-                        labelAnchor: new google.maps.Point(3, 30),
-                        labelClass: "labels", // the CSS class for the label
-                        labelInBackground: false
-                    }
-                });
+                if (!markers[id]) {
+                    markers[id] = new google.maps.Marker({
+                        icon: {
+                            url: location.href + 'images/virus_' + (players[id].virus.params.image || 1) + '.png',
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(50, 50),
+                            labelContent: players[id].username,
+                            labelAnchor: new google.maps.Point(3, 30),
+                            labelClass: "labels", // the CSS class for the label
+                            labelInBackground: false
+                        },
+                        map: map
+                    });
+                    markers[id].addListener('click', function() {
+                        if (id == EG.API.Account.currentPlayer.id) {
+                            infowindow.setContent("<div style='text-align: center;font-size: 25px;'>You</div>" +
+                                "<div>Carrying " + (EG.API.Game.players[id].viruses.length + 1) + " " +
+                                ((EG.API.Game.players[id].viruses.length > 0) ? "virues" : "virus") + "</div>");
+                        } else {
+                            infowindow.setContent("<div style='text-align: center;font-size: 25px;'>" + EG.API.Game.players[id].username + "</div>" +
+                                "<div>Carrying " + (EG.API.Game.players[id].viruses.length + 1) + " " +
+                                ((EG.API.Game.players[id].viruses.length > 0) ? "virues" : "virus") + "</div>");
+                        }
+                        infowindow.open(map, markers[id]);
+                    });
+                }
                 markers[id].setPosition(players[id].location);
-                markers[id].setMap(map);
                 circles[id] = circles[id] || new google.maps.Circle({
                     strokeColor: players[id].virus.params.color,
                     strokeOpacity: 0.8,
                     strokeWeight: 2,
                     fillColor: players[id].virus.params.color,
-                    fillOpacity: 0.35
+                    fillOpacity: 0.35,
+                    map: map
                 });
                 circles[id].setRadius(players[id].virus.threshold);
-                circles[id].setMap(map);
                 circles[id].setCenter(new google.maps.LatLng(players[id].location));
             }
         });
@@ -202,12 +206,12 @@ $(document).ready(function() {
             scoreDiv.remove();
         }, 2000);
     };
-    EG.API._Callbacks._onpowerup = function(){
-      var powerupDivHTML = "<div class='points-scored'>POWER UP!</div>";
-      var powerupDiv = $(powerupDivHTML);
-      $("body").append(powerupDiv);
-      setTimeout(function() {
-          powerupDiv.remove();
-      }, 2000);
+    EG.API._Callbacks._onpowerup = function() {
+        var powerupDivHTML = "<div class='points-scored'>POWER UP!</div>";
+        var powerupDiv = $(powerupDivHTML);
+        $("body").append(powerupDiv);
+        setTimeout(function() {
+            powerupDiv.remove();
+        }, 2000);
     }
 });
