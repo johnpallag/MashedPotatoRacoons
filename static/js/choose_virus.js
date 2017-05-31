@@ -85,3 +85,10 @@ $(document).ready(function() {
     }, alert);
   });
 });
+
+ $("#logout").on("click",function(){
+      EG.API.Account.logout(function(){
+        location.href = "..";
+      });
+    });
+
