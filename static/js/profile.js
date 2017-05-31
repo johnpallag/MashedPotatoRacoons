@@ -20,7 +20,7 @@ $(document).ready(function() {
         $("#accountLevel").text("level " + level);
         $("#accountPointsBar").css("width", EG.API.Account.levelCompletion() + "%");
         $("#profileLevelBar").css("width", EG.API.Account.levelCompletion() + "%");
-        $("#profileLevel").text("level " + level);
+        $("#profileLevel").text("Level " + level);
         $("#stats-virusCount").text(EG.API.Account.currentPlayer.viruses.length);
         $("#stats-infectCount").text(EG.API.Account.currentPlayer.stats.infectedCount);
         $("#stats-powerupCount").text(EG.API.Account.currentPlayer.stats.powerupCount);
