@@ -84,11 +84,10 @@ $(document).ready(function() {
       location.href = "..";
     }, alert);
   });
-});
 
- $("#logout").on("click",function(){
+ $("#logout_choosevirus").on("click",function(){
       EG.API.Account.logout(function(){
         location.href = "..";
       });
     });
-
+});
