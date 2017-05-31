@@ -14,4 +14,9 @@ $(document).ready(function() {
         $("#accountLevel").text("level " + level);
         $("#accountPointsBar").css("width", EG.API.Account.levelCompletion() + "%");
     }
-})
+    $("#logout_howtoplay").on("click",function(){
+      EG.API.Account.logout(function(){
+        location.href = "..";
+      });
+    });
+});

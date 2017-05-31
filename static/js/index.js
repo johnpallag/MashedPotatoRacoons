@@ -215,4 +215,11 @@ $(document).ready(function() {
             powerupDiv.remove();
         }, 2000);
     }
+    
+     $("#logout_index").on("click",function(){
+      EG.API.Account.logout(function(){
+        location.href = "..";
+      });
+    });
+
 });

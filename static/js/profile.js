@@ -26,7 +26,7 @@ $(document).ready(function() {
         $("#stats-powerupCount").text(EG.API.Account.currentPlayer.stats.powerupCount);
         $("#stats-distance").text(EG.API.Account.currentPlayer.stats.distanceTraveled);
     }
-    $("#logout").on("click",function(){
+    $("#logout_profile").on("click",function(){
       EG.API.Account.logout(function(){
         location.href = "..";
       });

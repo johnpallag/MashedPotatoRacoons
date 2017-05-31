@@ -34,4 +34,11 @@ $(document).ready(function() {
             });
         });
     };
+
+     $("#logout_leaderboard").on("click",function(){
+      EG.API.Account.logout(function(){
+        location.href = "..";
+      });
+    });
+
 });
