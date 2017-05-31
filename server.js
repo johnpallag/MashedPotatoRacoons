@@ -90,7 +90,7 @@ io.on('connection', function(socket){
     }
     players[id].updateLocation(loc);
     if(Math.random() > 0.5){
-      powerups[powerupCount % (Object.keys(players).length * 20)] = randomLocation(loc);
+      powerups[powerupCount % (Object.keys(players).length * 8)] = randomLocation(loc);
       powerupCount++;
     }
     for(var i=0;i<powerups.length;i++){
