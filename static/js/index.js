@@ -162,7 +162,7 @@ $(document).ready(function() {
                         } else {
                             infowindow.setContent("<div style='text-align: center;font-size: 25px;'>" + EG.API.Game.players[id].username + "</div>" +
                                 "<div>Carrying " + (EG.API.Game.players[id].viruses.length + 1) + " " +
-                                ((EG.API.Game.players[id].viruses.length > 0) ? "virues" : "virus") + "</div>");
+                                ((EG.API.Game.players[id].viruses.length > 0) ? "viruses" : "virus") + "</div>");
                         }
                         infowindow.open(map, markers[id]);
                     });
