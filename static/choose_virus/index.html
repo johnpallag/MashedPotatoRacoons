@@ -66,21 +66,21 @@
       <a href="../" class="brand-logo center">Epidemic Go</a>
 
       <ul id="slide-out" class="side-nav">
-        <li>
-          <div class="userView" id="profileLink" style="cursor:pointer;display:none;" onclick="location.href='../profile'">
-            <img class="circle" src="../images/profile.png">
-            <span class="white-text">Alok Mysore</span>
-            <div class="levelup">
-              <div class="determinate" style="width: 70%"></div>
-            </div>
-            <span class="white-text">level 6</span>
-          </div>
-        </li>
+		<li>
+			<div class="userView" id="profileLink" style="cursor:pointer;display:none;">
+				<img class="circle" id="profilePic_Nav" src="../images/profile.png">
+				<span class="white-text" id="accountName">Alok Mysore</span>
+				<div class="levelup">
+					<div class="determinate" style="width: 70%" id="accountPointsBar"></div>
+				</div>
+				<span class="white-text" id="accountLevel">level 6</span>
+			</div>
+		</li>
 
         <li><a href="../index.html"><i class="material-icons">dashboard</i>Home</a></li>
         <li><a href="../leaderboard"><i class="material-icons">star</i>Leaderboard</a></li>
         <li><a href="../howtoplay"><i class="material-icons">play_arrow</i>How to Play</a></li>
-        <li><a id="logout_choosevirus"><i class="material-icons">perm_identity</i>Logout</a></li>
+        <li><a id="logout_choosevirus" style="display:none"><i class="material-icons">perm_identity</i>Logout</a></li>
       </ul>
 
       <a href="#" data-activates="slide-out" class="button-collapse" onclick=""><i class="material-icons">menu</i></a>

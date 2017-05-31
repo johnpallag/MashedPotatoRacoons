@@ -51,6 +51,17 @@ EG.API = {
                 if (onError) onError(evt);
             });
         },
+		update: function(virus, onSuccess, onError){
+			post("updateVirus", {
+				id: EG.API.Account.currentPlayer.id,
+				virus: virus
+			}, function(player){
+                EG.API.Account.currentPlayer = player;
+				if(onSuccess) onSuccess(player);
+			}, function(evt){
+                if (onError) onError(evt);
+			});
+		},
         logout: function(callback) {
             localStorage.removeItem("username");
             localStorage.removeItem("password");

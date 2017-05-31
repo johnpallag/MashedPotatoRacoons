@@ -3,8 +3,10 @@ $(document).ready(function() {
     $(".button-collapse").sideNav();
     EG.API.Account.authenticate(onAuthentication);
 
-    function onAuthentication() {
-      $("#profileLink").show();
+    function onAuthentication(player) {
+	    $("#logout_howtoplay").show();
+        $("#profileLink").show();
+        document.getElementById('profilePic_Nav').src = "../choose_virus/img/virus_" + player.virus.params.image + ".png";
         var player = EG.API.Account.currentPlayer;
         player.virus = player.virus || {};
         player.virus.params = player.virus.params || {};

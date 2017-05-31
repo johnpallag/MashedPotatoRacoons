@@ -72,6 +72,20 @@ io.on('connection', function(socket){
       }
     }
   });
+  socket.on('updateVirus', function(json){
+    const data = JSON.parse(json);
+    const id = data.id;
+    if(!players[id]){
+      socket.emit('requestError', "Invalid id");
+    } else if(!data.virus){
+      socket.emit('requestError', "Missing virus details");
+    } else {
+      var newVirus = new Virus(id, data.virus);
+	  players[id].virus = newVirus;
+	  socket.emit('success', JSON.stringify(players[id]));
+	  io.emit('data', JSON.stringify(players));
+	}
+  });
   socket.on('authenticate', function(json){
     const data = JSON.parse(json);
     const id = data.id;

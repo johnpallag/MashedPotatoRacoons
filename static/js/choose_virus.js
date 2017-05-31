@@ -60,6 +60,24 @@ $(document).ready(function() {
   if (location.href.indexOf("signup") > -1) {
     $("#loginmodel").show();
     $("#virusCreator").hide();
+  } else {
+	  $("#choose").addClass("disabled");
+	  $("#choose").css("pointer-events","none");
+	  EG.API.Account.authenticate(function(player){
+		$("#choose").removeClass("disabled");
+		$("#choose").css("pointer-events","all");
+	    $("#logout_choosevirus").show();
+	    $("#profileLink").show();
+        
+        document.getElementById('profilePic_Nav').src = "../choose_virus/img/virus_" + player.virus.params.image + ".png";
+        $("#accountName").text(player.name || "Your Name");
+        var level = EG.API.Account.calcLevel();
+        $("#accountLevel").text("level " + level);
+        $("#accountPointsBar").css("width", EG.API.Account.levelCompletion() + "%");
+		
+	  }, function(){
+		  alert("Error getting account");
+	  });
   }
 
   $("#signup").on("click", function(e) {
@@ -80,9 +98,15 @@ $(document).ready(function() {
       threshold: d,
       lifetime: t
     };
-    EG.API.Account.signup($("#username").val(), $("#password").val(), $("#name").val(), virus, function() {
-      location.href = "..";
-    }, alert);
+    if (location.href.indexOf("signup") > -1) {
+	  EG.API.Account.signup($("#username").val(), $("#password").val(), $("#name").val(), virus, function() {
+	    location.href = "..";
+	  }, alert);
+    } else {
+	  EG.API.Account.update(virus, function() {
+	    location.href = "..";
+	  }, alert);
+	}
   });
 
  $("#logout_choosevirus").on("click",function(){

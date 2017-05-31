@@ -73,6 +73,7 @@ function initMap() {
 }
 
 function onLoggedIn() {
+	$("#logout_index").show();
     $("#loginmodel").hide();
     $("#points").show();
     $("#profileLink").show();
