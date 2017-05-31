@@ -10,7 +10,7 @@ function post(action, body, onSuccess, onError) {
     EG.API._Callbacks._onsuccess = onSuccess;
     socket.emit(action, JSON.stringify(body));
 }
-
+ 
 EG.API = {
     _Callbacks: {
         _onerror: null,

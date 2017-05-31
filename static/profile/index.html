@@ -43,7 +43,7 @@
             <ul id="slide-out" class="side-nav">
                 <li>
                     <div class="userView" id="profileLink" style="cursor:pointer;">
-                        <img class="circle" src="../images/profile.png">
+                        <img class="circle" id="profilePic_Nav" src="../images/profile.png">
                         <span class="white-text" id="accountName">Alok Mysore</span>
                         <div class="levelup">
                             <div class="determinate" style="width: 70%" id="accountPointsBar"></div>
@@ -83,18 +83,19 @@
     </div>
     <div class="row">
         <div class="col s4">
-            <img class="circle profile-picture responsive-img" src="../images/profile.png">
+            <img class="circle profile-picture responsive-img" id="profilePic" src="../images/profile.png">
         </div>
         <div class="col s4 pull-s2">
             </br>
             <h5 class="white-text responsive-text" id="profileName">Alok Mysore</h5>
-            <h6 class="white-text responsive-text" id="profileUsername">@iamawesomealok</h6>
+            <h6 class="white-text responsive-text" id="profileUsername">@iamawesomealok</h6> 
         </div>
         <div class="col s4">
             </br>
             <h4 class="white-text responsive-text" id="profileLevel">Level 6</h4>
+            <a class="waves-effect waves-light btn" id="changeVirus">Change</a>  
         </div>
-    </div>
+    </div> 
     <div class="achievement-progress">
         <div class="determinate" id="profileLevelBar"></div>
     </div>

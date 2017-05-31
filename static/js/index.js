@@ -82,13 +82,14 @@ function onLoggedIn() {
     player.virus = player.virus || {};
     player.virus.params = player.virus.params || {};
     player.virus.color = player.virus.color || EG.API.Util.randColor();
+    document.getElementById('profilePic_Nav').src = "../choose_virus/img/virus_" + player.virus.params.image + ".png";
     $("#accountName").text(player.name || "Your Name");
     var gradient = ['rgba(255, 255, 255, 0)',
         EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
         EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
         EG.API.Util.hexToRGB(player.virus.params.color, 1), EG.API.Util.hexToRGB(player.virus.params.color, 1),
         EG.API.Util.hexToRGB(player.virus.params.color, 1)
-    ];
+    ]; 
     heatmap.set('gradient', gradient);
     map.setZoom(22);
     if (center) {

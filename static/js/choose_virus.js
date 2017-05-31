@@ -19,7 +19,7 @@ function changeImage(imagelink, distance, infection) {
   document.getElementById('choseninfection').innerHTML = "Time: " + infection + " day";
   document.getElementById('chosenname').innerHTML = "Your Chosen Virus: " + document.getElementById(imagelink).innerHTML;
 }
-
+ 
 $(document).ready(function() {
   $(".button-collapse").sideNav();
   setTimeout(function() {
@@ -31,7 +31,7 @@ $(document).ready(function() {
     dist: 0,
     shift: 0,
     padding: 0
-  });
+  }); 
 
   $('.carousel').bind('DOMSubtreeModified', function(e) {
     console.log(e);
