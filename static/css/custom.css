@@ -295,3 +295,65 @@ input {
     height: 32px;
     line-height: 32px;
 }
+
+
+
+@media screen and (max-width: 320px) and (min-width: 0px) {
+  .row h4 {
+    font-size: 1.8rem; !important;
+  }
+  .row p {
+    font-size: 0.7rem;!important;
+  }
+  #Signin-name {
+    margin-bottom:10px;!important;
+  }
+  #Signin-password {
+      margin-bottom:10px;!important;
+  }
+}
+
+@media screen and (max-width: 655px) and (min-width: 321px) {
+  .row h4 {
+    font-size: 1.8rem; !important;
+  }
+  .row p {
+    font-size: 1rem;!important;
+  }
+  #Signin-name {
+    margin-bottom:10px;!important;
+  }
+  #Signin-password {
+      margin-bottom:10px;!important;
+  }
+}
+
+@media screen and (max-width: 992px) and (min-width: 656px) {
+  .row h4 {
+    font-size: 2rem; !important;
+  }
+  .row p {
+    font-size: 1.2rem;!important;
+  }
+  #Signin-name {
+    margin-bottom:10px;!important;
+  }
+  #Signin-password {
+      margin-bottom:10px;!important;
+  }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 993px) {
+  .row h4 {
+    font-size: 2rem; !important;
+  }
+  .row p {
+    font-size: 1.2rem;!important;
+  }
+  #Signin-name {
+    margin-bottom:8px;!important;
+  }
+  #Signin-password {
+      margin-bottom:8px;!important;
+  }
+}
